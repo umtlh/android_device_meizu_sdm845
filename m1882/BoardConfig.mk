@@ -94,6 +94,9 @@ TARGET_LD_SHIM_LIBS += /vendor/bin/hw/android.hardware.drm@1.3-service.clearkey|
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
+# Encryption
+TARGET_HW_DISK_ENCRYPTION := true
+
 # GPS
 USE_DEVICE_SPECIFIC_GPS := true
 USE_DEVICE_SPECIFIC_LOC_API := true
