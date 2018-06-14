@@ -14,6 +14,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 class LightListener implements SensorEventListener {
 
     private static final String TAG = "LightListener";
@@ -26,6 +30,8 @@ class LightListener implements SensorEventListener {
     private final SensorManager mSensorManager;
     private final Sensor mSensor;
 
+    private ExecutorService mExecutorService;
+
     private boolean mIsListening = false;
     private boolean mBoostAOD = false;
 
@@ -33,6 +39,11 @@ class LightListener implements SensorEventListener {
         mService = service;
         mSensorManager = (SensorManager) service.getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT, false);
+        mExecutorService = Executors.newSingleThreadExecutor();
+    }
+
+    private Future<?> submit(Runnable runnable) {
+        return mExecutorService.submit(runnable);
     }
 
     @Override
@@ -52,15 +63,19 @@ class LightListener implements SensorEventListener {
     void enable() {
         if (mIsListening) return;
         if (DEBUG) Log.d(TAG, "Enabling");
-        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
         mIsListening = true;
+        submit(() -> {
+            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        });
     }
 
     void disable() {
         if (!mIsListening) return;
         if (DEBUG) Log.d(TAG, "Disabling");
-        mSensorManager.unregisterListener(this, mSensor);
         mIsListening = false;
+        submit(() -> {
+            mSensorManager.unregisterListener(this, mSensor);
+        });
     }
 
 }
