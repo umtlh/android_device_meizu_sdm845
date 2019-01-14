@@ -91,6 +91,11 @@ function blob_fixup() {
             patchelf --add-needed "libprotobuf-cpp-full-vendor-3.9.1.so" "${2}"
         fi
         ;;
+    vendor/lib/hw/audio.primary.sdm845.so | vendor/lib64/hw/audio.primary.sdm845.so)
+        if [ -z $(patchelf --print-needed "${2}" | grep "libprocessgroup.so") ]; then
+            patchelf --add-needed "libprocessgroup.so" "${2}"
+        fi
+        ;;
     etc/vstab_db_0_720p_video_30fps.config | etc/vstab_db_0_4k_video_30fps.config | etc/vstab_db_0_1080p_video_30fps.config | vendor/lib/camera/components/com.arcsoft.node.realtimebokeh.so | vendor/lib/camera/components/com.qti.stats.pdlib.so | vendor/lib/camera/components/com.arcsoft.node.capturebokeh.so | vendor/lib/camera/components/com.arcsoft.node.picauto.so | vendor/lib/camera/components/com.inv.node.eis.so | vendor/lib/camera/components/com.arcsoft.node.hdr.so | vendor/lib/camera/components/com.qti.stats.aec.so | vendor/lib/camera/components/com.arcsoft.node.beauty.so | vendor/lib/camera/components/com.arcsoft.node.smoothtransition.so | vendor/lib/camera/components/com.arcsoft.node.lowlighthdr.so | vendor/lib/libmms_hal_vstab.so | vendor/lib/libarcsoft_dualcam_refocus.so | vendor/lib/hw/com.qti.chi.override.so | vendor/lib/hw/camera.qcom.so)
         sed -i "s|/data/misc/camera|/data/vendor/cumX|g" "${2}"
         ;;
