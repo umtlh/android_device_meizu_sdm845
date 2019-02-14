@@ -2747,7 +2747,7 @@ case "$target" in
         # Turn on sleep modes.
         echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 	echo 100 > /proc/sys/vm/swappiness
-	echo 120 > /proc/sys/vm/watermark_scale_factor
+	echo 1 > /proc/sys/vm/watermark_scale_factor
     ;;
 esac
 
@@ -3133,4 +3133,3 @@ esac
 misc_link=$(ls -l /dev/block/bootdevice/by-name/misc)
 real_path=${misc_link##*>}
 setprop persist.vendor.mmi.misc_dev_path $real_path
-
