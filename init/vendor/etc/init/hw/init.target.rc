@@ -66,8 +66,6 @@ on late-fs
     start vendor.qti.hardware.display.allocator
 
 on post-fs
-    start qseecomd
-    exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
 on post-fs-data
@@ -137,11 +135,6 @@ on property:sys.shutdown.requested=*
 
 on charger
     start power_off_alarm
-
-service qseecomd /vendor/bin/qseecomd
-    class core
-    user root
-    group root
 
 service thermal-engine /system/vendor/bin/thermal-engine
    class main
