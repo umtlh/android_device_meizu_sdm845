@@ -311,6 +311,7 @@ PRODUCT_PACKAGES += \
 
 # VNDK-SP
 PRODUCT_PACKAGES += \
+    libwui \
     com.android.vndk.current.on_vendor
 
 PRODUCT_COPY_FILES += \
