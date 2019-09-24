@@ -8,6 +8,7 @@ media.stagefright.enable-aac=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
+media.stagefright.thumbnail.prefer_hw_codecs=true
 audio.offload.video=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
