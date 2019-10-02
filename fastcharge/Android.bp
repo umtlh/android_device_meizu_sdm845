@@ -20,7 +20,6 @@ cc_binary {
         "libbinder",
         "libcutils",
         "libhidlbase",
-        "libhidltransport",
         "libutils",
         "vendor.lineage.fastcharge@1.0",
     ],
