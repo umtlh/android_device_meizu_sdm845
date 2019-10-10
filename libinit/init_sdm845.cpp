@@ -31,6 +31,7 @@
 #include <unistd.h>
 
 #include <android-base/properties.h>
+#include <android-base/strings.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
@@ -39,31 +40,47 @@
 
 using android::base::GetProperty;
 
-void property_override(char const prop[], char const value[])
+// copied from build/tools/releasetools/ota_from_target_files.py
+// but with "." at the end and empty entry
+std::vector<std::string> ro_product_props_default_source_order = {
+    "",
+    "bootimage.",
+    "system.",
+    "system_ext.",
+    "product.",
+    "odm.",
+    "vendor.",
+};
+
+void property_override(char const prop[], char const value[], bool add)
 {
-    prop_info *pi;
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
+    auto pi = (prop_info *) __system_property_find(prop);
+    if (pi != nullptr) {
         __system_property_update(pi, value, strlen(value));
-    else
+    } else if (add) {
         __system_property_add(prop, strlen(prop), value, strlen(value));
+    }
 }
-void property_override_hexa(char const prop[], char const system_prop[],
-    char const system_ext_prop[], char const product_prop[], char const odm_prop[],
-    char const vendor_prop[], char const value[])
+
+void set_ro_product_prop(char const prop[], char const value[])
 {
-    property_override(prop, value);
-    property_override(system_prop, value);
-    property_override(system_ext_prop, value);
-    property_override(product_prop, value);
-    property_override(odm_prop, value);
-    property_override(vendor_prop, value);
+    for (const auto &source : ro_product_props_default_source_order) {
+        auto prop_name = "ro.product." + source + prop;
+        property_override(prop_name.c_str(), value, false);
+    }
+}
+
+void set_ro_build_prop(char const prop[], char const value[])
+{
+    for (const auto &source : ro_product_props_default_source_order) {
+        auto prop_name = "ro." + source + "build." + prop;
+        property_override(prop_name.c_str(), value, false);
+    }
 }
 
 void vendor_load_properties()
 {
-
-    property_override_hexa("ro.build.type", "ro.system.build.type", "ro.system_ext.build.type", "ro.product.build.type", "ro.odm.build.type", "ro.vendor.build.type", "user");
-    property_override_hexa("ro.build.tags", "ro.system.build.tags", "ro.system_ext.build.tags", "ro.product.build.tags", "ro.odm.build.tags", "ro.vendor.build.tags", "release-keys");
-    property_override("ro.boot.verifiedbootstate", "green");
+    set_ro_build_prop("type", "user");
+    set_ro_build_prop("tags", "release-keys");
+    property_override("ro.boot.verifiedbootstate", "green", true);
 }
