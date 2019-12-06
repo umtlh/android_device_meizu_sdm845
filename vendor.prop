@@ -123,14 +123,6 @@ persist.thermalconfig.powersave=/vendor/etc/thermal.low.conf
 persist.thermalengine.platform=qualcomm
 persist.thermalmanager.enable=true
 
-# Dalvik
-dalvik.vm.heapgrowthlimit=256m
-dalvik.vm.heapmaxfree=8m
-dalvik.vm.heapminfree=512k
-dalvik.vm.heapsize=512m
-dalvik.vm.heapstartsize=8m
-dalvik.vm.heaptargetutilization=0.75
-
 # Misc
 ro.build.shutdown_timeout=0
 sys.vendor.shutdown.waittime=500
