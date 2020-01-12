@@ -55,10 +55,15 @@ class FingerprintInscreen : public IFingerprintInscreen {
     sp<ISteller> mSteller;
     sp<IStellerClientCallback> mStellerClientCallback;
 
+    std::mutex mCallbackLock;
+    sp<IFingerprintInscreenCallback> mCallback;
+
     bool mFingerPressed;
+    bool mIconShown;
 
     std::string mFODModel;
 
+    void notifyKeyEvent(int value);
     void notifyHal(int32_t status, int32_t data);
 };
 

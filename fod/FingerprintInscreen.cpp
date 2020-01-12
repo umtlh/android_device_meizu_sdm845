@@ -6,10 +6,11 @@
  *
  */
 
-#define LOG_TAG "FingerprintInscreenService"
+#define LOG_TAG "InscreenService"
 
 #include "FingerprintInscreen.h"
 #include "StellerClientCallback.h"
+#include "KeyEventWatcher.h"
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -32,6 +33,9 @@
 #define FOD_POS_X 149 * 3
 #define FOD_POS_Y 531 * 3
 #define FOD_SIZE 62 * 3
+
+#define TOUCHPANAL_DEV_PATH "/dev/input/event5"
+#define KEY_FOD 0x0272
 
 namespace vendor {
 namespace lineage {
@@ -61,11 +65,27 @@ static T get(const std::string& path, const T& def) {
     return file.fail() ? def : result;
 }
 
+static KeyEventWatcher *keyEventWatcher;
+
+static void sighandler(int) {
+    LOG(INFO) << "Exiting";
+    keyEventWatcher->exit();
+}
+
 FingerprintInscreen::FingerprintInscreen()
     : mFingerPressed{false}
+    , mIconShown{false}
     {
     mSteller = ISteller::getService();
     mStellerClientCallback = new StellerClientCallback();
+
+    keyEventWatcher = new KeyEventWatcher(TOUCHPANAL_DEV_PATH, [this](const std::string&, input_event evt) {
+        if (evt.code == KEY_FOD) {
+            notifyKeyEvent(evt.value);
+        }
+    });
+
+    signal(SIGTERM, sighandler);
 }
 
 Return<int32_t> FingerprintInscreen::getPositionX() {
@@ -118,12 +138,14 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
+    mIconShown = true;
     mFODModel = GetProperty("vendor.meizu.fp_vendor", "");
     LOG(INFO) << "mFODModel: " << mFODModel;
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
+    mIconShown = false;
     return Void();
 }
 
@@ -153,7 +175,9 @@ Return<bool> FingerprintInscreen::shouldBoostBrightness() {
     return false;
 }
 
-Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallback>&) {
+Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallback>& callback) {
+    std::lock_guard<std::mutex> _lock(mCallbackLock);
+    mCallback = callback;
     return Void();
 }
 
@@ -161,6 +185,31 @@ void FingerprintInscreen::notifyHal(int32_t status, int32_t data) {
     Return<void> ret = this->mSteller->notify(status, data, mStellerClientCallback);
     if (!ret.isOk()) {
         LOG(ERROR) << "notifyHal(" << status << ") error: " << ret.description();
+    }
+}
+
+void FingerprintInscreen::notifyKeyEvent(int value) {
+    if (!mIconShown) {
+        return;
+    }
+
+    LOG(INFO) << "notifyKeyEvent: " << value;
+
+    std::lock_guard<std::mutex> _lock(mCallbackLock);
+    if (mCallback == nullptr) {
+        return;
+    }
+
+    if (value) {
+        Return<void> ret = mCallback->onFingerDown();
+        if (!ret.isOk()) {
+            LOG(ERROR) << "FingerDown() error: " << ret.description();
+        }
+    } else {
+        Return<void> ret = mCallback->onFingerUp();
+        if (!ret.isOk()) {
+            LOG(ERROR) << "FingerUp() error: " << ret.description();
+        }
     }
 }
 

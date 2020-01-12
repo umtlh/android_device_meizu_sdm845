@@ -16,6 +16,7 @@ cc_binary {
         "service.cpp",
         "FingerprintInscreen.cpp",
         "StellerClientCallback.cpp",
+        "KeyEventWatcher.cpp",
     ],
     shared_libs: [
         "libbase",
