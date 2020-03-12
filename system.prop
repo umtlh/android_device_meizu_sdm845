@@ -93,5 +93,9 @@ persist.timed.enable=true
 # FRP Partition
 ro.frp.pst=/dev/block/platform/soc/1d84000.ufshc/by-name/frp
 
+# Dalvik-VM
+dalvik.vm.dex2oat-filter=everything
+dalvik.vm.image-dex2oat-filter=everything
+
 # Doze
 ro.sensor.proximity=true
