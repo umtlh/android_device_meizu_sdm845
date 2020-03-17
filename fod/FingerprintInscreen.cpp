@@ -17,6 +17,7 @@
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <cutils/properties.h>
+#include <hardware_legacy/power.h>
 #include <hidl/HidlTransportSupport.h>
 #include <fstream>
 #include <cmath>
@@ -88,6 +89,7 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
+    acquire_wake_lock(PARTIAL_WAKE_LOCK, LOG_TAG);
     mFingerPressed = true;
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(12)); /* crDroid != Descendant */
@@ -111,6 +113,7 @@ Return<void> FingerprintInscreen::onRelease() {
             LOG(INFO) << "onRelease: HBM is off!";
         }
     }).detach();
+    release_wake_lock(LOG_TAG);
     return Void();
 }
 
