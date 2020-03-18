@@ -139,3 +139,8 @@ debug.remote.config.disable=true
 # Camera
 ro.vendor.camera.no_vts=1
 persist.camera.expose.aux=1
+
+
+# WiFi Display
+persist.debug.wfd.enable=1
+persist.sys.wfd.virtual=0

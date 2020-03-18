@@ -339,6 +339,8 @@ PRODUCT_COPY_FILES += \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
+    libnl \
+    libwfdaac \
     WfdService \
     WfdCommon
 
