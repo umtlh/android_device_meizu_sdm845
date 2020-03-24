@@ -137,6 +137,12 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1 \
     vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.meizu_sdm845
 
+# Gatekeeper / Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+    android.hardware.keymaster@4.0-service
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/gps/etc,$(TARGET_COPY_OUT_VENDOR)/etc)
