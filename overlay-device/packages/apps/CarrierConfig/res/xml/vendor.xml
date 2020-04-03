@@ -1288,11 +1288,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="allow_video_call_in_low_battery" value="false" />
         <boolean name="config_carrier_cs_retry_available" value="true" />
+        <boolean name="support_add_conference_participants_bool" value="true" />
     </carrier_config>
 
     <carrier_config mcc="450" mnc="06">
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="allow_video_call_in_low_battery" value="false" />
+        <boolean name="support_adhoc_conference_calls_bool" value="true" />
+        <boolean name="support_add_conference_participants_bool" value="true" />
     </carrier_config>
 
     <carrier_config mcc="450" mnc="08">
@@ -1418,6 +1421,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="allow_add_call_during_video_call" value="false" />
         <boolean name="allow_hold_video_call_bool" value="false" />
         <boolean name="vilte_data_is_metered_bool" value="false" />
+        <boolean name="support_adhoc_conference_calls_bool" value="true" />
+        <boolean name="support_add_conference_participants_bool" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="01">
@@ -1499,6 +1504,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="allow_add_call_during_video_call" value="false" />
         <boolean name="allow_hold_video_call_bool" value="false" />
         <boolean name="vilte_data_is_metered_bool" value="false" />
+        <boolean name="support_adhoc_conference_calls_bool" value="true" />
+        <boolean name="support_add_conference_participants_bool" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="03">
@@ -1642,6 +1649,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="allow_add_call_during_video_call" value="false" />
         <boolean name="allow_hold_video_call_bool" value="false" />
         <boolean name="vilte_data_is_metered_bool" value="false" />
+        <boolean name="support_adhoc_conference_calls_bool" value="true" />
+        <boolean name="support_add_conference_participants_bool" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="08">
@@ -1691,6 +1700,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="allow_add_call_during_video_call" value="false" />
         <boolean name="allow_hold_video_call_bool" value="false" />
         <boolean name="vilte_data_is_metered_bool" value="false" />
+        <boolean name="support_adhoc_conference_calls_bool" value="true" />
+        <boolean name="support_add_conference_participants_bool" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="09">
