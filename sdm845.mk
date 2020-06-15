@@ -224,6 +224,9 @@ PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service.meizu_sdm845
 
 # Media
+PRODUCT_PACKAGES += \
+    libmediaplayerservice
+
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/media,$(TARGET_COPY_OUT_VENDOR)/etc)
 
