@@ -32,7 +32,7 @@ struct sdm_feature_version {
 struct sdm_disp_mode {
     int32_t id;
     int32_t type;
-    int32_t len;
+    uint32_t len;
     char* name;
 };
 
