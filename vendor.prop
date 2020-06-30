@@ -46,6 +46,7 @@ persist.vendor.cne.feature=1
 vendor.audio.dolby.ds2.enabled=false
 vendor.audio.dolby.ds2.hardbypass=false
 vendor.audio.offload.buffer.size.kb=32
+vendor.audio.hal.boot.timeout.ms=20000
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.offload.multiple.enabled=false
