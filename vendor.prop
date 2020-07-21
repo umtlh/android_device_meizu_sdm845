@@ -109,6 +109,11 @@ ro.vendor.qti.sys.fw.bg_apps_limit=60
 ro.vendor.qti.sys.fw.bservice_age=5000
 ro.vendor.qti.sys.fw.bservice_enable=true
 
+# Dalvik-VM
+dalvik.vm.boot-dex2oat-cpu-set=0,1,2,3,4,5,6,7
+dalvik.vm.image-dex2oat-cpu-set=4,5,6,7
+dalvik.vm.dex2oat-threads=4
+
 # IMS
 persist.dbg.ims_volte_enable=1
 persist.dbg.volte_avail_ovr=1
