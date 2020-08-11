@@ -58,7 +58,6 @@ audio.offload.gapless.enabled=true
 audio.offload.buffer.size.kb=32
 audio.offload.disable=true
 ro.audio.monitorRotation=true
-mm.enable.smoothstreaming=true
 media.stagefright.audio.deep=true
 
 # CABL
