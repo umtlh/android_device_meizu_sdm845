@@ -1,0 +1,1 @@
+dontaudit domain hal_drm_clearkey_exec:file { getattr read };
