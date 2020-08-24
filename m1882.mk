@@ -311,7 +311,3 @@ PRODUCT_COPY_FILES += \
 #PocketMode
 PRODUCT_PACKAGES += \
     MeizuPocketMode
-
-#FOD specific of crDroid
-EXTRA_FOD_ANIMATIONS := true
-TARGET_HAS_FOD := true

@@ -193,5 +193,8 @@ TARGET_USES_NQ_NFC := false
 # FM
 BOARD_HAVE_QCOM_FM := false
 
+# FaceUnlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
 # inherit from the proprietary version
 -include vendor/meizu/m1882/BoardConfigVendor.mk
