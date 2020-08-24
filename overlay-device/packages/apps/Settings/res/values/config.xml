@@ -1,0 +1,8 @@
+<!-- Use only if devices have variable intensity support for haptics-->
+<bool name="config_vibration_supports_multiple_intensities">true</bool>
+
+<!-- If device supports battery health options -->
+<bool name="config_supportBatteryHealth">false</bool>
+<string name="config_batChargeCycle">####</string>
+<string name="config_batDesCap">####</string>
+<string name="config_batCurCap">####</string> 
