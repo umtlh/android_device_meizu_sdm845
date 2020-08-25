@@ -29,12 +29,15 @@
 #define FOD_POS_Y 531 * 3
 #define FOD_SIZE 62 * 3
 
+#define HBM_OFF_DELAY 0
+#define HBM_ON_DELAY 0
+
 namespace vendor {
 namespace lineage {
 namespace biometrics {
 namespace fingerprint {
 namespace inscreen {
-namespace V1_0 {
+namespace V1_1 {
 namespace implementation {
 
 /*
@@ -86,7 +89,6 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 
 Return<void> FingerprintInscreen::onPress() {
     mFingerPressed = true;
-    set(HBM_ENABLE_PATH, 1);
     set(DC_LIGHT_PATH, 0);
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(150));
@@ -100,7 +102,6 @@ Return<void> FingerprintInscreen::onPress() {
 Return<void> FingerprintInscreen::onRelease() {
     mFingerPressed = false;
     notifyHal(NOTIFY_FINGER_REMOVED, 0);
-    set(HBM_ENABLE_PATH, mHBM);
     set(DC_LIGHT_PATH, mDC);
     return Void();
 }
@@ -128,15 +129,43 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool) {
 }
 
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
+    int dimAmount;
     int brightness = get(BRIGHTNESS_PATH, 0);
     float alpha = 1.0 - pow(brightness / 1023.0f, 0.455);
     float min = (float) property_get_int32("fod.dimming.min", 0);
     float max = (float) property_get_int32("fod.dimming.max", 255);
-    return min + (max - min) * alpha;
+    dimAmount = min + (max - min) * alpha;
+    LOG(INFO) << "dimAmount = " << dimAmount;
+    return dimAmount;
 }
 
 Return<bool> FingerprintInscreen::shouldBoostBrightness() {
     return false;
+}
+
+Return<int32_t> FingerprintInscreen::getHbmOffDelay() {
+    return HBM_OFF_DELAY;
+}
+
+Return<int32_t> FingerprintInscreen::getHbmOnDelay() {
+    return HBM_ON_DELAY;
+}
+
+Return<bool> FingerprintInscreen::supportsAlwaysOnHBM() {
+    return true;
+}
+
+Return<bool> FingerprintInscreen::noDim() {
+    return true;
+}
+
+Return<void> FingerprintInscreen::switchHbm(bool enabled) {
+    if (enabled) {
+        set(HBM_ENABLE_PATH, 1);
+    } else {
+        set(HBM_ENABLE_PATH, mHBM);
+    }
+    return Void();
 }
 
 Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallback>&) {
@@ -151,7 +180,7 @@ void FingerprintInscreen::notifyHal(int32_t status, int32_t data) {
 }
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V1_1
 }  // namespace inscreen
 }  // namespace fingerprint
 }  // namespace biometrics
