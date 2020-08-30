@@ -30,7 +30,7 @@
 #define FOD_SIZE 62 * 3
 
 #define HBM_OFF_DELAY 35
-#define HBM_ON_DELAY 195
+#define HBM_ON_DELAY 205
 
 namespace vendor {
 namespace lineage {
@@ -61,7 +61,8 @@ static T get(const std::string& path, const T& def) {
 FingerprintInscreen::FingerprintInscreen()
     : mDC{0}
     , mHBM{0}
-    , mHBMCheck{0}
+    , mHBMCheckOn{0}
+    , mHBMCheckOff{0}
     , mFingerPressed{false}
     {
     mSteller = ISteller::getService();
@@ -92,15 +93,14 @@ Return<void> FingerprintInscreen::onPress() {
     mFingerPressed = true;
     mDC = get(DC_LIGHT_PATH, 0);
     set(DC_LIGHT_PATH, 0);
-    mHBMCheck = get (HBM_ENABLE_PATH, 0);
-    if (mHBMCheck == 0) {
-        LOG(INFO) << "HBM was not enabled properly, enabling HBM!";
+    mHBMCheckOn = get (HBM_ENABLE_PATH, 0);
+    if (mHBMCheckOn == 0) {
+        LOG(INFO) << "onPress: HBM was not enabled properly, enabling HBM!";
         set(HBM_ENABLE_PATH, 1);
-        LOG(INFO) << "HBM enabled!";
+        LOG(INFO) << "onPress: HBM enabled!";
     } else {
-        LOG(INFO) << "HBM already enabled!";
+        LOG(INFO) << "onPress: HBM already enabled!";
     }
-
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(170));
         if (mFingerPressed) {
@@ -123,13 +123,14 @@ Return<void> FingerprintInscreen::onShowFODView() {
 
 Return<void> FingerprintInscreen::onHideFODView() {
     std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(35));
-        if (mHBM == 0) {
-            LOG(INFO) << "HBM was not restored properly, restoring HBM!";
+        std::this_thread::sleep_for(std::chrono::milliseconds(38));
+        mHBMCheckOff = get (HBM_ENABLE_PATH, 0);
+        if (mHBMCheckOff != mHBM) {
+            LOG(INFO) << "onHideFODView: restoring HBM!";
             set(HBM_ENABLE_PATH, mHBM);
-            LOG(INFO) << "HBM restored!";
+            LOG(INFO) << "onHideFODView: HBM restored!";
         } else {
-            LOG(INFO) << "HBM already restored!";
+            LOG(INFO) << "onHideFODView: no need to restore HBM!";
         }
     }).detach();
     return Void();
@@ -154,7 +155,7 @@ Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
     float min = (float) property_get_int32("fod.dimming.min", 0);
     float max = (float) property_get_int32("fod.dimming.max", 255);
     dimAmount = min + (max - min) * alpha;
-    LOG(INFO) << "dimAmount = " << dimAmount;
+    LOG(INFO) << "getDimAmount: dimAmount = " << dimAmount;
     return dimAmount;
 }
 
@@ -182,10 +183,10 @@ Return<void> FingerprintInscreen::switchHbm(bool enabled) {
     if (enabled) {
         mHBM = get(HBM_ENABLE_PATH, 0);
         set(HBM_ENABLE_PATH, 1);
-        LOG(INFO) << "HBM enabled!";
+        LOG(INFO) << "switchHbm: HBM enabled!";
     } else {
-        set(HBM_ENABLE_PATH, mHBM);
-        LOG(INFO) << "HBM restored!";
+        set(HBM_ENABLE_PATH, 0);
+        LOG(INFO) << "switchHbm: HBM disabled, waiting for restoring!";
     }
     return Void();
 }

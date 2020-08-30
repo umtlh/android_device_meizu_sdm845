@@ -61,7 +61,8 @@ class FingerprintInscreen : public IFingerprintInscreen {
 
     int32_t mDC;
     int32_t mHBM;
-    int32_t mHBMCheck;
+    int32_t mHBMCheckOn;
+    int32_t mHBMCheckOff;
 
     bool mFingerPressed;
 
