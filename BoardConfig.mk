@@ -198,5 +198,8 @@ BOARD_HAVE_QCOM_FM := false
 # FaceUnlock
 TARGET_FACE_UNLOCK_SUPPORTED := true
 
+# SurfaceFlinger
+TARGET_USES_QCOM_UM_4_9_FAMILY := true
+
 # inherit from the proprietary version
 -include vendor/meizu/m1882/BoardConfigVendor.mk
