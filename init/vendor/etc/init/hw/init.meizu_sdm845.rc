@@ -144,3 +144,9 @@ on boot
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
+
+    # Boot flashlight effect
+    chmod 0666 /sys/class/meizu/flash/flash4
+    chown system system /sys/class/meizu/flash/flash4
+    chmod +x /vendor/bin/init.effects.sh
+    exec_background - system system -- /vendor/bin/sh /vendor/bin/init.effects.sh
