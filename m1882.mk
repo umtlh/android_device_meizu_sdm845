@@ -146,8 +146,8 @@ PRODUCT_PACKAGES += \
     libgps.utils \
     libloc_core \
     liblocation_api \
-		libbatching \
-		libgeofencing
+    libbatching \
+    libgeofencing
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/gps/etc,$(TARGET_COPY_OUT_VENDOR)/etc)
