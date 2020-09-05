@@ -138,16 +138,16 @@ PRODUCT_PACKAGES += \
     vendor.lineage.biometrics.fingerprint.inscreen@1.1-service.meizu_m1882
 
 # GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    libcurl \
-    libgnss \
-    libgnsspps \
-    libgps.utils \
-    libloc_core \
-    liblocation_api \
-    libbatching \
-    libgeofencing
+# PRODUCT_PACKAGES += \
+#     android.hardware.gnss@1.0-impl-qti \
+#     libcurl \
+#     libgnss \
+#     libgnsspps \
+#     libgps.utils \
+#     libloc_core \
+#     liblocation_api \
+#     libbatching \
+#     libgeofencing
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/gps/etc,$(TARGET_COPY_OUT_VENDOR)/etc)
