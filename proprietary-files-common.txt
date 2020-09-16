@@ -534,9 +534,7 @@ vendor/lib64/vendor.qti.voiceprint@1.0.so
 # Media
 -vendor/lib/libplatformconfig.so
 -vendor/lib64/libplatformconfig.so
-lib/libmmosal.so
 product/lib/vendor.qti.hardware.vpp@1.1.so
-lib64/libmmosal.so
 product/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
@@ -1440,3 +1438,14 @@ vendor/lib64/libwfddisplayconfig_proprietary.so
 vendor/lib64/libwfdhdcpcp.so
 vendor/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
 vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
+
+# AV - SMxx50 (10800) | QSSI (10400)
+system_ext/lib/extractors/libmmparserextractor.so
+system_ext/lib/libavenhancements.so
+system_ext/lib/libmmosal.so
+system_ext/lib/libmmparser_lite.so
+-system_ext/lib/libqct_resampler.so
+system_ext/lib64/extractors/libmmparserextractor.so
+system_ext/lib64/libavenhancements.so
+system_ext/lib64/libmmosal.so
+system_ext/lib64/libmmparser_lite.so

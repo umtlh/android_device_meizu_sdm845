@@ -91,7 +91,6 @@ sdm.debug.disable_scalar=0
 sdm.debug.prefersplit=1
 sdm.debug.disable_dest_scalar=1
 persist.vendor.qti.games.gt.prof=1
-mm.enable.qcom_parser=13623037
 persist.hvx.hwjpeg.enable=true
 persist.timed.enable=true
 
