@@ -123,7 +123,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
 
 Return<void> FingerprintInscreen::onHideFODView() {
     std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(38));
+        std::this_thread::sleep_for(std::chrono::milliseconds(47));
         mHBMCheckOff = get (HBM_ENABLE_PATH, 0);
         if (mHBMCheckOff != mHBM) {
             LOG(INFO) << "onHideFODView: restoring HBM!";
