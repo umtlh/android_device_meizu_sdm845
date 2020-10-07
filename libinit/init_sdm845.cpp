@@ -83,4 +83,8 @@ void vendor_load_properties()
     set_ro_build_prop("type", "user");
     set_ro_build_prop("tags", "release-keys");
     property_override("ro.boot.verifiedbootstate", "green", true);
+    property_override("ro.boot.flash.locked", "1", true);
+    property_override("ro.boot.verifiedbootstate", "green", true);
+    property_override("ro.boot.veritymode", "enforcing", true);
+    property_override("ro.boot.vbmeta.device_state", "locked", true);
 }
