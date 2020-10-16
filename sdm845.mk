@@ -341,6 +341,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libnl \
     libwfdaac \
+    libwfdaac_vendor \
     WfdService \
     WfdCommon
 
