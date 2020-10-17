@@ -225,6 +225,7 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
+    libavservices_minijail.vendor \
     libmediaplayerservice
 
 PRODUCT_COPY_FILES += \
