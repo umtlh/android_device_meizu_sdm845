@@ -25,6 +25,7 @@ $(call add-radio-file,prebuilt/cmnlib64.mbn)
 $(call add-radio-file,prebuilt/dspso.bin)
 $(call add-radio-file,prebuilt/aop.mbn)
 $(call add-radio-file,prebuilt/dtbo.img)
+$(call add-radio-file,prebuilt/vbmeta.img)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 subdir_makefiles=$(call first-makefiles-under,$(LOCAL_PATH))

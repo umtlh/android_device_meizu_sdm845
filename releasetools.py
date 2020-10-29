@@ -31,13 +31,6 @@ def AddImage(info, basename, dest):
   info.script.Print("Flashing " + basename + "...")
   info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
 
-def AddImageAVB(info, basename, dest):
-  name = basename
-  data = info.input_zip.read("IMAGES/" + basename)
-  common.ZipWriteStr(info.output_zip, name, data)
-  info.script.Print("Flashing " + basename + "...")
-  info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
-
 def AddImageWithBak(info, basename, dest):
   name = basename
   data = info.input_zip.read("RADIO/" + basename)
@@ -67,6 +60,6 @@ def OTA_InstallFirmware(info):
   AddImage(info, "NON-HLOS.bin", "/dev/block/bootdevice/by-name/modem")
   AddImage(info, "BTFM.bin", "/dev/block/bootdevice/by-name/bluetooth")
   AddImage(info, "splash.mbn", "/dev/block/bootdevice/by-name/splash")
-  AddImageAVB(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
+  AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
   info.script.Print("Firmware images patched successfully!")
   return
