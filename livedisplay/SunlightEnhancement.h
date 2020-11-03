@@ -29,7 +29,7 @@ namespace sysfs {
 using ::android::hardware::Return;
 using ::android::hardware::Void;
 
-#define FILE_HBM "/sys/class/meizu/lcm/display/hbm"
+#define FILE_HBM "/sys/class/meizu/lcm/display/sunnyscreen"
 
 class SunlightEnhancement : public ISunlightEnhancement {
   public:
