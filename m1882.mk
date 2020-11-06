@@ -317,10 +317,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay
 
-# PocketMode
-PRODUCT_PACKAGES += \
-    MeizuPocketMode
-
 # Doze
 PRODUCT_PACKAGES += \
     ParanoidDoze
