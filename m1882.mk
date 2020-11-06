@@ -321,6 +321,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     MeizuPocketMode
 
+# Doze
+PRODUCT_PACKAGES += \
+    ParanoidDoze
+
 # FOD specific of crDroid
 EXTRA_FOD_ANIMATIONS := true
 TARGET_HAS_FOD := true

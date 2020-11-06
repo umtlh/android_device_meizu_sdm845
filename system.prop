@@ -96,3 +96,6 @@ persist.timed.enable=true
 
 # FRP Partition
 ro.frp.pst=/dev/block/platform/soc/1d84000.ufshc/by-name/frp
+
+# Doze
+ro.sensor.proximity=true
