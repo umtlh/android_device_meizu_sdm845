@@ -212,10 +212,6 @@ PRODUCT_PACKAGES += \
     libandroid_net \
     netutils-wrapper-1.0
 
-# Parts
-PRODUCT_PACKAGES += \
-    MeizuParts
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
