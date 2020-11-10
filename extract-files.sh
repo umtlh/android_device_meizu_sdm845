@@ -72,7 +72,7 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-    vendor/bin/hw/vendor.display.color@1.0-service | vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service | vendor/lib/vendor.display.postproc@1.0_vendor.so)
+    vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service)
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
     vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so)

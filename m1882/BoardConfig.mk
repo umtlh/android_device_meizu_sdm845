@@ -174,9 +174,6 @@ BOARD_ROOT_EXTRA_FOLDERS := \
     firmware \
     persist
 
-# RenderScript
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
 
