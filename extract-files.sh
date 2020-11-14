@@ -72,9 +72,6 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-    vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service)
-        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
-        ;;
     vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so)
         sed -i "s|libbase.so|libbv28.so|g" "${2}"
         ;;
