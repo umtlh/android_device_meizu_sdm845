@@ -85,9 +85,13 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.a2dp@1.0-impl \
     libbthost_if
 
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_vstab \
+    libshim_protobuf
+
 # Camera
 PRODUCT_PACKAGES += \
-    libshim_camera \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     Snap
