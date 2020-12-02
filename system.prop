@@ -93,3 +93,6 @@ persist.vendor.qti.games.gt.prof=1
 mm.enable.qcom_parser=13623037
 persist.hvx.hwjpeg.enable=true
 persist.timed.enable=true
+
+# FRP Partition
+ro.frp.pst=/dev/block/platform/soc/1d84000.ufshc/by-name/frp
