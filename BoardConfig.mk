@@ -66,9 +66,8 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 USE_DEVICE_SPECIFIC_CAMERA := true
 USE_CAMERA_STUB := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
-TARGET_LD_SHIM_LIBS += /vendor/lib/libmms_hal_vstab.so|/vendor/lib/libshim_vstab.so
-TARGET_LD_SHIM_LIBS += /vendor/lib/libmms_warper_vstab.so|/vendor/lib/libshim_vstab.so
-TARGET_LD_SHIM_LIBS += /vendor/lib/camera/components/com.inv.node.eis.so|/vendor/lib/libshim_protobuf.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/libmms_hal_vstab.so|/vendor/lib/libshim_camera.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/libmms_warper_vstab.so|/vendor/lib/libshim_camera.so
 
 # Charger
 WITH_LINEAGE_CHARGER := false
