@@ -232,8 +232,7 @@ PRODUCT_PACKAGES += \
     ims-ext-common \
     libjson \
     librmnetctl \
-    libxml2 \
-    libprotobuf-cpp-full
+    libxml2
 
 # RCS
 PRODUCT_PACKAGES += \
