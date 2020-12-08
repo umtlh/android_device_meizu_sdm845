@@ -59,32 +59,21 @@
     <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
 
     <!-- Pull from FlymeOS -->
-    <bool translatable="false" name="config_wifi_disconnect_only_on_initial_ipreachability">false</bool>
-    <bool translatable="false" name="config_wifi_dual_sap_mode_enabled">true</bool>
-    <bool translatable="false" name="config_wifi_enable_disconnection_debounce">true</bool>
-    <bool translatable="false" name="config_wifi_enable_wifi_firmware_debugging">true</bool>
-    <bool translatable="false" name="config_wifi_framework_cellular_handover_enable_user_triggered_adjustment">true</bool>
-    <bool translatable="false" name="config_wifi_framework_enable_associated_network_selection">true</bool>
-    <bool translatable="false" name="config_wifi_framework_enable_voice_call_sar_tx_power_limit">false</bool>
-    <bool translatable="false" name="config_wifi_only_link_same_credential_configurations">true</bool>
-    <bool translatable="false" name="config_wifi_revert_country_code_on_cellular_loss">false</bool>
-    <bool translatable="false" name="config_wifi_turn_off_during_emergency_call">false</bool>
+    <bool name="config_wifi_disconnect_only_on_initial_ipreachability">false</bool>
+    <bool name="config_wifi_dual_sap_mode_enabled">true</bool>
+    <bool name="config_wifi_enable_disconnection_debounce">true</bool>
+    <bool name="config_wifi_enable_wifi_firmware_debugging">true</bool>
+    <bool name="config_wifi_framework_cellular_handover_enable_user_triggered_adjustment">true</bool>
+    <bool name="config_wifi_framework_enable_associated_network_selection">true</bool>
+    <bool name="config_wifi_framework_enable_voice_call_sar_tx_power_limit">false</bool>
+    <bool name="config_wifi_only_link_same_credential_configurations">true</bool>
+    <bool name="config_wifi_revert_country_code_on_cellular_loss">false</bool>
+    <bool name="config_wifi_turn_off_during_emergency_call">false</bool>
 
     <!-- list of interface names for SoftAp in Dual mode. -->
     <string-array translatable="false" name="config_wifi_dual_sap_interfaces">
         <item>"softap1"</item>
         <item>"softap2"</item>
     </string-array>
-
-    <!-- Wifi driver supports IEEE80211AX for softap -->
-   <bool translatable="false" name="config_wifiSoftapIeee80211axSupported">true</bool>
-   <!-- Wifi driver supports IEEE80211AX single user beamformer for softap -->
-   <bool translatable="false" name="config_wifiSoftapHeSuBeamformerSupported">true</bool>
-   <!-- Wifi driver supports IEEE80211AX single user beamformee for softap -->
-   <bool translatable="false" name="config_wifiSoftapHeSuBeamformeeSupported">true</bool>
-   <!-- Wifi driver supports IEEE80211AX multiple user beamformer for softap -->
-   <bool translatable="false" name="config_wifiSoftapHeMuBeamformerSupported">true</bool>
-   <!-- Wifi driver supports IEEE80211AX TWT (Target Wake Time) for softap -->
-   <bool translatable="false" name="config_wifiSoftapHeTwtSupported">true</bool>
 
 </resources>
