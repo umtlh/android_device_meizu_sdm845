@@ -25,7 +25,6 @@
 
 #include "DisplayModes.h"
 #include "PictureAdjustment.h"
-#include "SunlightEnhancement.h"
 
 #define SDM_DISP_LIB "libsdm-disp-vndapis.so"
 
@@ -37,10 +36,8 @@ using android::hardware::joinRpcThreadpool;
 
 using ::vendor::lineage::livedisplay::V2_0::IDisplayModes;
 using ::vendor::lineage::livedisplay::V2_0::IPictureAdjustment;
-using ::vendor::lineage::livedisplay::V2_0::ISunlightEnhancement;
 using ::vendor::lineage::livedisplay::V2_0::sdm::PictureAdjustment;
 using ::vendor::lineage::livedisplay::V2_0::sysfs::DisplayModes;
-using ::vendor::lineage::livedisplay::V2_0::sysfs::SunlightEnhancement;
 
 int main() {
     // Vendor backend
@@ -52,7 +49,6 @@ int main() {
     // HIDL frontend
     sp<DisplayModes> dm;
     sp<PictureAdjustment> pa;
-    sp<SunlightEnhancement> se;
 
     status_t status = OK;
 
@@ -105,13 +101,6 @@ int main() {
         goto shutdown;
     }
 
-    se = new SunlightEnhancement();
-    if (se == nullptr) {
-        LOG(ERROR) << "Can not create an instance of LiveDisplay HAL SunlightEnhancement Iface, "
-                      "exiting.";
-        goto shutdown;
-    }
-
     configureRpcThreadpool(1, true /*callerWillJoin*/);
 
     if (dm->isSupported()) {
@@ -128,15 +117,6 @@ int main() {
         if (status != OK) {
             LOG(ERROR) << "Could not register service for LiveDisplay HAL PictureAdjustment Iface ("
                        << status << ")";
-            goto shutdown;
-        }
-    }
-
-    if (se->isSupported()) {
-        status = se->registerAsService();
-        if (status != OK) {
-            LOG(ERROR) << "Could not register service for LiveDisplay HAL SunlightEnhancement Iface"
-                       << " (" << status << ")";
             goto shutdown;
         }
     }
