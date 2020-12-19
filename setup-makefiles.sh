@@ -21,15 +21,13 @@ set -e
 VENDOR=meizu
 DEVICE_COMMON=sdm845
 
-INITIAL_COPYRIGHT_YEAR=2020
-
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+ANDROID_ROOT="$MY_DIR"/../../..
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
+HELPER="$ANDROID_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -53,7 +51,7 @@ if [ -z "${DEVICE}" ]; then
 fi
 
 # Initialize the helper
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$ANDROID_ROOT" true
 
 # Copyright headers and guards
 write_headers "m1882 m1892"
@@ -65,8 +63,7 @@ write_footers
 
 if [ -n "${DEVICE}" ]; then
     # Reinitialize the helper for device
-    INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
-    setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false
+    setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false
 
       # Copyright headers and guards
     write_headers
