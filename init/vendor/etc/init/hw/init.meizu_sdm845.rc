@@ -113,7 +113,6 @@ on boot
     chmod 0444 /sys/class/meizu/usb_thermal/sync_temp
     # Enabled by default
     write /sys/class/meizu/charger/fast_usb_mode 1
-    write /sys/class/meizu/charger/fastcharging 1
 
     # Breath led mode
     chown system system /sys/class/meizu/mx_leds/leds/breath/blink

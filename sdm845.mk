@@ -321,6 +321,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     KeyHandler
 
+# FastCharge HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.fastcharge@1.0-service.meizu_sdm845
+
 # FOD specific of crDroid
 EXTRA_FOD_ANIMATIONS := true
 TARGET_HAS_FOD := true
