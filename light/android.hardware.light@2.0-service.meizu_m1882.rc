@@ -1,9 +1,0 @@
-service vendor.light-hal-2-0-meizu_m1882 /vendor/bin/hw/android.hardware.light@2.0-service.meizu_m1882
-    interface android.hardware.light@2.0::ILight default
-    class hal
-    user system
-    group system
-    shutdown critical
-
-on init
-    chown system system /sys/class/leds/breath/blink

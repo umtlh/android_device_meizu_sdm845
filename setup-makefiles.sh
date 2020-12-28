@@ -18,8 +18,8 @@
 
 set -e
 
-DEVICE=m1882
 VENDOR=meizu
+DEVICE_COMMON=sdm845
 
 INITIAL_COPYRIGHT_YEAR=2020
 
@@ -36,13 +36,44 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
+while [ "$1" != "" ]; do
+    case "$1" in
+        --m1882 )               DEVICE=m1882
+                                ;;
+        --m1892 )               DEVICE=m1892
+                                ;;
+    esac
+    shift
+done
+
+if [ -z "${DEVICE}" ]; then
+    echo "The device name was not selected!"
+    echo "Use --m1882 (if 16th) or --m1892 (if 16thPlus)!"
+    exit 1
+fi
+
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 # Copyright headers and guards
-write_headers
+write_headers "m1882 m1892"
 
-write_makefiles "$MY_DIR"/proprietary-files.txt
+write_makefiles "${MY_DIR}/proprietary-files-common.txt" true
 
 # Finish
 write_footers
+
+if [ -n "${DEVICE}" ]; then
+    # Reinitialize the helper for device
+    INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
+    setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false
+
+      # Copyright headers and guards
+    write_headers
+
+    # The standard device blobs
+    write_makefiles "${MY_DIR}/${DEVICE}/proprietary-files-${DEVICE}.txt" true
+
+    # Finish
+    write_footers
+fi
