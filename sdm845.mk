@@ -8,9 +8,7 @@ $(call inherit-product, vendor/meizu/sdm845/sdm845-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-device \
-    $(LOCAL_PATH)/overlay-lineage \
-    $(LOCAL_PATH)/overlay-product
+    $(LOCAL_PATH)/overlay-sdm845
 
 # Permissions
 PRODUCT_COPY_FILES += \
