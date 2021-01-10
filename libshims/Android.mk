@@ -23,7 +23,7 @@ LOCAL_C_INCLUDES := \
     frameworks/native/include
 
 LOCAL_SHARED_LIBRARIES := \
-    libgui_vendor \
+    libgui \
     libui
 
 LOCAL_MODULE := libshim_camera
