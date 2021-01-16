@@ -6,16 +6,16 @@
  *
  */
 
-#ifndef VENDOR_LINEAGE_BIOMETRICS_FINGERPRINT_INSCREEN_V1_0_FINGERPRINTINSCREEN_H
-#define VENDOR_LINEAGE_BIOMETRICS_FINGERPRINT_INSCREEN_V1_0_FINGERPRINTINSCREEN_H
+#ifndef VENDOR_MOKEE_BIOMETRICS_FINGERPRINT_INSCREEN_V1_0_FINGERPRINTINSCREEN_H
+#define VENDOR_MOKEE_BIOMETRICS_FINGERPRINT_INSCREEN_V1_0_FINGERPRINTINSCREEN_H
 
-#include <vendor/lineage/biometrics/fingerprint/inscreen/1.0/IFingerprintInscreen.h>
+#include <vendor/mokee/biometrics/fingerprint/inscreen/1.0/IFingerprintInscreen.h>
 #include <vendor/synaptics/fingerprint/interfaces/extensions/1.0/ISteller.h>
 #include <vendor/synaptics/fingerprint/interfaces/extensions/1.0/IStellerClientCallback.h>
 #include <vendor/goodix/hardware/biometrics/fingerprint/2.1/IGoodixFingerprintDaemon.h>
 
 namespace vendor {
-namespace lineage {
+namespace mokee {
 namespace biometrics {
 namespace fingerprint {
 namespace inscreen {
@@ -67,7 +67,7 @@ class FingerprintInscreen : public IFingerprintInscreen {
 }  // namespace inscreen
 }  // namespace fingerprint
 }  // namespace biometrics
-}  // namespace lineage
+}  // namespace mokee
 }  // namespace vendor
 
-#endif  // VENDOR_LINEAGE_BIOMETRICS_FINGERPRINT_INSCREEN_V1_0_FINGERPRINTINSCREEN_H
+#endif  // VENDOR_MOKEE_BIOMETRICS_FINGERPRINT_INSCREEN_V1_0_FINGERPRINTINSCREEN_H
