@@ -1,0 +1,4 @@
+# SYSFS
+type sysfs_charger_switch, sysfs_type, r_fs_type, fs_type;
+
+type sysfs_charger_switch_writable, sysfs_type, rw_fs_type, fs_type;

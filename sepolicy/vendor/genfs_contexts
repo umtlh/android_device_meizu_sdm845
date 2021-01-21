@@ -1,0 +1,3 @@
+# FastCharge HAL
+genfscon sysfs /devices/platform/vendor/vendor:switch_charger                               u:object_r:sysfs_charger_switch:s0
+genfscon sysfs /devices/platform/vendor/vendor:switch_charger/fastcharging                  u:object_r:sysfs_charger_switch_writable:s0
