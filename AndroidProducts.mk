@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_m1882.mk \
-    $(LOCAL_DIR)/lineage_m1892.mk
+    $(LOCAL_DIR)/descendant_m1882.mk \
+    $(LOCAL_DIR)/descendant_m1892.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_m1882-userdebug \
-    lineage_m1892-userdebug
+    descendant_m1882-userdebug \
+    descendant_m1892-userdebug

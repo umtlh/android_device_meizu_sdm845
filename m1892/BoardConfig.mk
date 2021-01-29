@@ -73,9 +73,6 @@ TARGET_LD_SHIM_LIBS += /vendor/lib/libmms_hal_vstab.so|/vendor/lib/libshim_camer
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmms_warper_vstab.so|/vendor/lib/libshim_camera.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/camera/components/com.inv.node.eis.so|/vendor/lib/libprotobuf-cpp-full-vendor-3.9.1.so
 
-# Charger
-WITH_LINEAGE_CHARGER := false
-
 # Display
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_USES_C2D_COMPOSITION := true
@@ -128,7 +125,6 @@ BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Power
-TARGET_TAP_TO_WAKE_NODE := /dev/vendor.lineage.touch@1.0/dt2w
 TARGET_USES_INTERACTION_BOOST := true
 
 # Properties
