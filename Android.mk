@@ -10,6 +10,14 @@ ifneq ($(filter m1882 m1892,$(TARGET_DEVICE)),)
 
 $(call add-radio-file,radio/filesmap)
 
+ifeq ($(TARGET_DEVICE),m1882)
+$(call add-radio-file,m1882/prebuilt/dtbo.img)
+endif
+
+ifeq ($(TARGET_DEVICE),m1892)
+$(call add-radio-file,m1892/prebuilt/dtbo.img)
+endif
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
 subdir_makefiles=$(call first-makefiles-under,$(LOCAL_PATH))
 $(foreach mk,$(subdir_makefiles),$(info including $(mk) ...)$(eval include $(mk)))

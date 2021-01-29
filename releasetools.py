@@ -26,7 +26,7 @@ binImages = {}
 fwImages = {}
 
 # List of images that we pick from IMAGES/ in target-files.
-target_files_IMAGES_list = ["dtbo.img"]
+target_files_IMAGES_list = [] # Empty
 
 # The joined list of user image partitions of source and target builds.
 # - Items should be added to the list if new dynamic partitions are added.
