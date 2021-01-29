@@ -90,8 +90,6 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 Return<void> FingerprintInscreen::onPress() {
     mFingerPressed = true;
     std::thread([this]() {
-        int DelayBrightness = get(BRIGHTNESS_PATH, 0);
-        std::this_thread::sleep_for(std::chrono::milliseconds(DelayBrightness / -5 + 213));
         set(HBM_ENABLE_PATH, 1);
         std::this_thread::sleep_for(std::chrono::milliseconds(120));
         if (mFingerPressed) {
