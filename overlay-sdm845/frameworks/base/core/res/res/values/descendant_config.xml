@@ -27,5 +27,6 @@
 
      <!-- FOD -->
      <bool name="config_supportsScreenOffInDisplayFingerprint">true</bool>
+     <bool name="config_supportsInDisplayFingerprint">true</bool>
 
 </resources>
