@@ -62,7 +62,11 @@ DisplayMode DisplayModes::getDisplayModeInternal(const char *file) {
     int32_t id = INVALID;
 
     if (ReadFileToString(file, &tmp)) {
-        id = std::stoi(Trim(tmp));
+        if (Trim(tmp).empty()) {
+            id = 1;
+        } else {
+            id = std::stoi(Trim(tmp));
+        }
     }
 
     if (id < 0 || id > mDisplayModes.size() - 1) {
