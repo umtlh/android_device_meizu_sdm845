@@ -226,27 +226,28 @@
          Zone N + 1     array[N] <= LUX < infinity
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
+        <item>1</item>
         <item>3</item>
-        <item>8</item>
+        <item>5</item>
+        <item>6</item>
+        <item>13</item>
         <item>15</item>
-        <item>25</item>
-        <item>35</item>
-        <item>45</item>
-        <item>60</item>
-        <item>80</item>
+        <item>21</item>
+        <item>33</item>
+        <item>50</item>
         <item>100</item>
-        <item>125</item>
-        <item>155</item>
-        <item>170</item>
-        <item>200</item>
-        <item>225</item>
-        <item>285</item>
-        <item>340</item>
-        <item>425</item>
-        <item>500</item>
-        <item>1000</item>
+        <item>135</item>
+        <item>214</item>
+        <item>400</item>
+        <item>451</item>
+        <item>703</item>
+        <item>1121</item>
+        <item>1647</item>
         <item>2000</item>
-        <item>3000</item>
+        <item>3020</item>
+        <item>6789</item>
+        <item>8113</item>
+        <item>9878</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -254,28 +255,29 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>5</item>   <!-- 0-3 -->
-        <item>11</item>   <!-- 3-8 -->
-        <item>16</item>   <!-- 8-15 -->
-        <item>27</item>   <!-- 15-25 -->
-        <item>37</item>   <!-- 25-35 -->
-        <item>47</item>   <!-- 35-45 -->
-        <item>59</item>   <!-- 45-60 -->
-        <item>71</item>   <!-- 60-80 -->
-        <item>85</item>   <!-- 80-100 -->
-        <item>102</item>   <!-- 100-125 -->
-        <item>120</item>   <!-- 125-155 -->
-        <item>150</item>   <!-- 155-170 -->
-        <item>175</item>   <!-- 170-200 -->
-        <item>205</item>   <!-- 200-225 -->
-        <item>255</item>   <!-- 225-285 -->
-        <item>310</item>   <!-- 285-340 -->
-        <item>370</item>   <!-- 340-425 -->
-        <item>495</item>   <!-- 425-500 -->
-        <item>590</item>   <!-- 500-1000 -->
-        <item>700</item>   <!-- 1000-2000 -->
-        <item>850</item>  <!-- 2000-3000 -->
-        <item>1023</item>  <!-- 3000+ -->
+        <item>8</item>
+        <item>12</item>
+        <item>12</item>
+        <item>20</item>
+        <item>40</item>
+        <item>52</item>
+        <item>55</item>
+        <item>60</item>
+        <item>68</item>
+        <item>80</item>
+        <item>120</item>
+        <item>136</item>
+        <item>160</item>
+        <item>200</item>
+        <item>216</item>
+        <item>264</item>
+        <item>340</item>
+        <item>460</item>
+        <item>480</item>
+        <item>600</item>
+        <item>760</item>
+        <item>880</item>
+        <item>1024</item>
     </integer-array>
 
     <!-- Values for GPS configuration -->
