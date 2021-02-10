@@ -83,6 +83,12 @@ function blob_fixup() {
     vendor/lib/hw/camera.qcom.so)
         sed -i "s|libssc.so|libSSc.so|g" "${2}"
         ;;
+    vendor/lib/libmms_hal_vstab.so | vendor/lib/libmms_warper_vstab.so)
+        patchelf --add-needed "libshim_camera.so" "${2}"
+        ;;
+    vendor/lib/hw/camera.qcom.so)
+        patchelf --add-needed "libprotobuf-cpp-full-vendor-3.9.1.so" "${2}"
+        ;;
     esac
 }
 
