@@ -196,6 +196,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtflite
 
+# PSI
+PRODUCT_PACKAGES += \
+    libpsi.vendor
+
 # Service Tracker
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.servicetracker@1.2
