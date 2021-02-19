@@ -124,11 +124,13 @@ Return<void> FingerprintInscreen::onHideFODView() {
     return Void();
 }
 
-Return<bool> FingerprintInscreen::handleAcquired(int32_t, int32_t) {
+Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t vendorCode) {
+    LOG(INFO) << "handleAcquired: acquiredInfo " << acquiredInfo << " vendorCode: " << vendorCode;
     return false;
 }
 
-Return<bool> FingerprintInscreen::handleError(int32_t, int32_t) {
+Return<bool> FingerprintInscreen::handleError(int32_t error, int32_t vendorCode)  {
+    LOG(ERROR) << "handleError: error " << error << " vendorCode: " << vendorCode;
     return false;
 }
 
