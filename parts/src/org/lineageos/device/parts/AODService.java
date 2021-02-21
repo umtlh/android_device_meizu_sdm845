@@ -85,6 +85,7 @@ public class AODService extends Service {
             if (!mInteractive) {
                 Log.d(TAG, "Trigger AOD");
                 Utils.enterAOD();
+                Utils.boostAOD();
             }
         }, AOD_DELAY_MS);
     }

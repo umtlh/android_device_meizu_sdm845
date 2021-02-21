@@ -29,4 +29,8 @@ class Utils {
         FileUtils.writeLine("/sys/class/meizu/lcm/display/doze_s2", "1");
     }
 
+    static void boostAOD() {
+        FileUtils.writeLine("/sys/class/meizu/lcm/display/doze_mode", "1");
+    }
+
 }
