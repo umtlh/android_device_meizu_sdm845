@@ -14,6 +14,9 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class AODService extends Service {
 
     private static final String TAG = "AODService";
@@ -21,6 +24,7 @@ public class AODService extends Service {
 
     private static final long AOD_DELAY_MS = 1000;
 
+    private ExecutorService mExecutorService;
     private SettingObserver mSettingObserver;
     private ScreenReceiver mScreenReceiver;
 
@@ -39,6 +43,7 @@ public class AODService extends Service {
 
         if (Utils.isAODEnabled(this)) {
             mScreenReceiver.enable();
+            mExecutorService = Executors.newSingleThreadExecutor();
         }
     }
 
@@ -80,14 +85,27 @@ public class AODService extends Service {
 
     void onDisplayOff() {
         Log.d(TAG, "Device non-interactive");
-        mInteractive = false;
         mHandler.postDelayed(() -> {
-            if (!mInteractive) {
-                Log.d(TAG, "Trigger AOD");
-                Utils.enterAOD();
-                Utils.boostAOD();
-            }
+            mInteractive = false;
+            mExecutorService.execute(someRunnable);
         }, AOD_DELAY_MS);
     }
+
+
+    Runnable someRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Log.d(TAG, "Trigger AOD");
+            while (!mInteractive) {
+                Utils.enterAOD();
+                Utils.boostAOD();
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
 
 }
