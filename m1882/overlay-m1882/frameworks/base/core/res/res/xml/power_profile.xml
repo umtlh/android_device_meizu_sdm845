@@ -119,8 +119,8 @@
         <value>392</value>
         <value>480</value>
     </array>
-    <item name="cpu.awake">10</item>
-    <item name="cpu.idle">5</item>
+    <item name="cpu.idle">10</item>
+    <item name="cpu.suspend">5</item>
     <item name="battery.capacity">3010</item>
     <item name="battery.low.volt">3100</item>
     <item name="wifi.controller.idle">0.2</item>
@@ -135,7 +135,5 @@
         <value>.2</value>
         <value>2</value>
     </array>
-    <item name="aod.active">30</item>
-    <item name="fod.active">20</item>
-    <item name="face.active">400</item>
+    <item name="ambient.on">30</item>
 </device>
