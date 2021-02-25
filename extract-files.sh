@@ -75,11 +75,9 @@ function blob_fixup() {
     vendor/bin/hw/vendor.display.color@1.0-service | vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service | vendor/lib/vendor.display.postproc@1.0_vendor.so)
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
-
     vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so)
         sed -i "s|libbase.so|libbv28.so|g" "${2}"
         ;;
-
     vendor/lib/hw/camera.qcom.so)
         sed -i "s|libssc.so|libSSc.so|g" "${2}"
         ;;
@@ -88,6 +86,9 @@ function blob_fixup() {
         ;;
     vendor/lib/hw/camera.qcom.so)
         patchelf --add-needed "libprotobuf-cpp-full-vendor-3.9.1.so" "${2}"
+        ;;
+    etc/vstab_db_0_720p_video_30fps.config | etc/vstab_db_0_4k_video_30fps.config | etc/vstab_db_0_1080p_video_30fps.config | vendor/lib/camera/components/com.arcsoft.node.realtimebokeh.so | vendor/lib/camera/components/com.qti.stats.pdlib.so | vendor/lib/camera/components/com.arcsoft.node.capturebokeh.so | vendor/lib/camera/components/com.arcsoft.node.picauto.so | vendor/lib/camera/components/com.inv.node.eis.so | vendor/lib/camera/components/com.arcsoft.node.hdr.so | vendor/lib/camera/components/com.qti.stats.aec.so | vendor/lib/camera/components/com.arcsoft.node.beauty.so | vendor/lib/camera/components/com.arcsoft.node.smoothtransition.so | vendor/lib/camera/components/com.arcsoft.node.lowlighthdr.so | vendor/lib/libmms_hal_vstab.so | vendor/lib/libarcsoft_dualcam_refocus.so | vendor/lib/hw/com.qti.chi.override.so | vendor/lib/hw/camera.qcom.so)
+        sed -i "s|/data/misc/camera|/data/vendor/cumX|g" "${2}"
         ;;
     esac
 }

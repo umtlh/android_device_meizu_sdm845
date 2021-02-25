@@ -127,11 +127,11 @@ else
         echo 70 > /proc/sys/vm/swap_ratio
 
         # Swap disk - 200MB size
-        if [ ! -f /data/system/swap/swapfile ]; then
-            dd if=/dev/zero of=/data/system/swap/swapfile bs=1m count=200
+        if [ ! -f /data/vendor/swap/swapfile ]; then
+            dd if=/dev/zero of=/data/vendor/swap/swapfile bs=1m count=200
         fi
-        mkswap /data/system/swap/swapfile
-        swapon /data/system/swap/swapfile -p 32758
+        mkswap /data/vendor/swap/swapfile
+        swapon /data/vendor/swap/swapfile -p 32758
     fi
 fi
 }
