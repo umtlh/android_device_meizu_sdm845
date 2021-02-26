@@ -1,0 +1,1 @@
+allow hal_power_default touchpanel_gestures_device:fifo_file w_file_perms;

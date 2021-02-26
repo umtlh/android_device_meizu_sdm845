@@ -1,4 +1,8 @@
 # SYSFS
-type sysfs_charger_switch, sysfs_type, r_fs_type, fs_type;
-
-type sysfs_charger_switch_writable, sysfs_type, rw_fs_type, fs_type;
+type sysfs_charger, sysfs_type, rw_fs_type, fs_type;
+type sysfs_livedisplay, sysfs_type, rw_fs_type, fs_type;
+type sysfs_inscreen, sysfs_type, rw_fs_type, fs_type;
+type sysfs_power_supply, sysfs_type, rw_fs_type, fs_type;
+type sysfs_touchpanel_gestures, sysfs_type, rw_fs_type, fs_type;
+type sysfs_light, sysfs_type, rw_fs_type, fs_type;
+type sysfs_backlight, sysfs_type, rw_fs_type, fs_type;
