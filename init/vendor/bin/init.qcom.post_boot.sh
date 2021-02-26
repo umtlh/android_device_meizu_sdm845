@@ -3130,6 +3130,6 @@ case "$console_config" in
 esac
 
 # Parse misc partition path and set property
-misc_link=$(ls -l /dev/block/bootdevice/by-name/misc)
+misc_link=$(ls -l /dev/block/platform/soc/1d84000.ufshc/by-name/misc)
 real_path=${misc_link##*>}
 setprop persist.vendor.mmi.misc_dev_path $real_path

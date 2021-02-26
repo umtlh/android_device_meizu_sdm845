@@ -170,7 +170,7 @@ int gpt_utils_is_ufs_device();
 //
 //The algorithm to do this is as follows:
 //- Find the real block device(eg: /dev/block/sdb) that corresponds
-//  to the /dev/block/bootdevice/by-name/xbl(bak) symlink
+//  to the /dev/block/platform/soc/1d84000.ufshc/by-name/xbl(bak) symlink
 //
 //- Once we have the block device 'node' name(sdb in the above example)
 //  use this node to to locate the scsi generic device that represents

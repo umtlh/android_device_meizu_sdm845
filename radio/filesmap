@@ -27,42 +27,42 @@
 
 # filename              partition
 
-NON-HLOS.bin            /dev/block/bootdevice/by-name/modem
-BTFM.bin                /dev/block/bootdevice/by-name/bluetooth
-dspso.bin               /dev/block/bootdevice/by-name/dsp
-splash.mbn              /dev/block/bootdevice/by-name/splash
+NON-HLOS.bin            /dev/block/platform/soc/1d84000.ufshc/by-name/modem
+BTFM.bin                /dev/block/platform/soc/1d84000.ufshc/by-name/bluetooth
+dspso.bin               /dev/block/platform/soc/1d84000.ufshc/by-name/dsp
+splash.mbn              /dev/block/platform/soc/1d84000.ufshc/by-name/splash
 
-xbl.elf                 /dev/block/bootdevice/by-name/xbl
-xbl_config.elf          /dev/block/bootdevice/by-name/xbl_config
-tz.mbn                  /dev/block/bootdevice/by-name/tz
-aop.mbn                 /dev/block/bootdevice/by-name/aop
-hyp.mbn                 /dev/block/bootdevice/by-name/hyp
-keymaster64.mbn         /dev/block/bootdevice/by-name/keymaster
-cmnlib.mbn              /dev/block/bootdevice/by-name/cmnlib
-cmnlib64.mbn            /dev/block/bootdevice/by-name/cmnlib64
-abl.elf                 /dev/block/bootdevice/by-name/abl
-devcfg.mbn              /dev/block/bootdevice/by-name/devcfg
-qupv3fw.elf             /dev/block/bootdevice/by-name/qupfw
-storsec.mbn             /dev/block/bootdevice/by-name/storsec
-vbmeta.img              /dev/block/bootdevice/by-name/vbmeta
-dtbo.img                /dev/block/bootdevice/by-name/dtbo
+xbl.elf                 /dev/block/platform/soc/1d84000.ufshc/by-name/xbl
+xbl_config.elf          /dev/block/platform/soc/1d84000.ufshc/by-name/xbl_config
+tz.mbn                  /dev/block/platform/soc/1d84000.ufshc/by-name/tz
+aop.mbn                 /dev/block/platform/soc/1d84000.ufshc/by-name/aop
+hyp.mbn                 /dev/block/platform/soc/1d84000.ufshc/by-name/hyp
+keymaster64.mbn         /dev/block/platform/soc/1d84000.ufshc/by-name/keymaster
+cmnlib.mbn              /dev/block/platform/soc/1d84000.ufshc/by-name/cmnlib
+cmnlib64.mbn            /dev/block/platform/soc/1d84000.ufshc/by-name/cmnlib64
+abl.elf                 /dev/block/platform/soc/1d84000.ufshc/by-name/abl
+devcfg.mbn              /dev/block/platform/soc/1d84000.ufshc/by-name/devcfg
+qupv3fw.elf             /dev/block/platform/soc/1d84000.ufshc/by-name/qupfw
+storsec.mbn             /dev/block/platform/soc/1d84000.ufshc/by-name/storsec
+vbmeta.img              /dev/block/platform/soc/1d84000.ufshc/by-name/vbmeta
+dtbo.img                /dev/block/platform/soc/1d84000.ufshc/by-name/dtbo
 
 # filename + .bak       backup partition
 
-xbl.elf.bak             /dev/block/bootdevice/by-name/xblbak
-xbl_config.elf.bak      /dev/block/bootdevice/by-name/xbl_configbak
-tz.mbn.bak              /dev/block/bootdevice/by-name/tzbak
-aop.mbn.bak             /dev/block/bootdevice/by-name/aopbak
-hyp.mbn.bak             /dev/block/bootdevice/by-name/hypbak
-keymaster64.mbn.bak     /dev/block/bootdevice/by-name/keymasterbak
-cmnlib.mbn.bak          /dev/block/bootdevice/by-name/cmnlibbak
-cmnlib64.mbn.bak        /dev/block/bootdevice/by-name/cmnlib64bak
-abl.elf.bak             /dev/block/bootdevice/by-name/ablbak
-devcfg.mbn.bak          /dev/block/bootdevice/by-name/devcfgbak
-qupv3fw.elf.bak         /dev/block/bootdevice/by-name/qupfwbak
-storsec.mbn.bak         /dev/block/bootdevice/by-name/storsecbak
-vbmeta.img.bak          /dev/block/bootdevice/by-name/vbmetabak
-dtbo.img.bak            /dev/block/bootdevice/by-name/dtbobak
+xbl.elf.bak             /dev/block/platform/soc/1d84000.ufshc/by-name/xblbak
+xbl_config.elf.bak      /dev/block/platform/soc/1d84000.ufshc/by-name/xbl_configbak
+tz.mbn.bak              /dev/block/platform/soc/1d84000.ufshc/by-name/tzbak
+aop.mbn.bak             /dev/block/platform/soc/1d84000.ufshc/by-name/aopbak
+hyp.mbn.bak             /dev/block/platform/soc/1d84000.ufshc/by-name/hypbak
+keymaster64.mbn.bak     /dev/block/platform/soc/1d84000.ufshc/by-name/keymasterbak
+cmnlib.mbn.bak          /dev/block/platform/soc/1d84000.ufshc/by-name/cmnlibbak
+cmnlib64.mbn.bak        /dev/block/platform/soc/1d84000.ufshc/by-name/cmnlib64bak
+abl.elf.bak             /dev/block/platform/soc/1d84000.ufshc/by-name/ablbak
+devcfg.mbn.bak          /dev/block/platform/soc/1d84000.ufshc/by-name/devcfgbak
+qupv3fw.elf.bak         /dev/block/platform/soc/1d84000.ufshc/by-name/qupfwbak
+storsec.mbn.bak         /dev/block/platform/soc/1d84000.ufshc/by-name/storsecbak
+vbmeta.img.bak          /dev/block/platform/soc/1d84000.ufshc/by-name/vbmetabak
+dtbo.img.bak            /dev/block/platform/soc/1d84000.ufshc/by-name/dtbobak
 
 # For multiple file firmware images that differ from *.mbn and *.bin
 # you can specify filename.* to direct all files to the same location.
