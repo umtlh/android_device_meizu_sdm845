@@ -27,6 +27,8 @@
 #define NOTIFY_FINGER_DETECTED 1
 #define NOTIFY_FINGER_REMOVED 2
 
+#define NOTIFY_HAL_DELAY 60
+
 #define HBM_ENABLE_PATH "/sys/class/meizu/lcm/display/hbm"
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
@@ -117,7 +119,7 @@ Return<void> FingerprintInscreen::onPress() {
         std::this_thread::sleep_for(std::chrono::milliseconds(12)); /* crDroid != Descendant */
         set(HBM_ENABLE_PATH, 1);
         LOG(INFO) << "onPress: HBM is on!";
-        std::this_thread::sleep_for(std::chrono::milliseconds(120));
+        std::this_thread::sleep_for(std::chrono::milliseconds(NOTIFY_HAL_DELAY));
         if (mFingerPressed) {
             notifyHal(NOTIFY_FINGER_DETECTED, 0);
         }
