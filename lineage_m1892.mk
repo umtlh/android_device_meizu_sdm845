@@ -31,7 +31,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="meizu_16thPlus_CN-user 10 QKQ1.191222.002 1595524937 release-keys"
 
 BUILD_FINGERPRINT := meizu/qssi/qssi:10/QKQ1.191222.002/1595524937:user/release-keys
-
-PRODUCT_PRODUCT_PROPERTIES += \
-    fod.dimming.min=40 \
-    fod.dimming.max=255
