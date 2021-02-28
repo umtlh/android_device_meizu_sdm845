@@ -23,8 +23,6 @@
 #define SLIDE_UP_ENABLE     (1 << 2)
 #define SLIDE_DOWN_ENABLE   (1 << 3)
 #define DOUBLE_TAP_ENABLE   (1 << 4)
-#define ONECE_TAP_ENABLE    (1 << 5)
-#define LONG_TAP_ENABLE     (1 << 6)
 #define DRAW_E_ENABLE       (1 << 7)
 #define DRAW_C_ENABLE       (1 << 8)
 #define DRAW_W_ENABLE       (1 << 9)
@@ -51,12 +49,18 @@ namespace V1_0 {
 namespace implementation {
 
 const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGestureInfoMap = {
-    {0, {0x0280, "one_finger_left_swipe", SLIDE_LEFT_ENABLE}},
-    {1, {0x0281, "one_finger_right_swipe", SLIDE_RIGHT_ENABLE}},
-    {2, {0x0282, "one_finger_up_swipe", SLIDE_UP_ENABLE}},
-    {3, {0x0283, "one_finger_down_swipe", SLIDE_DOWN_ENABLE}},
-    {4, {0x0291, "letter_c", DRAW_C_ENABLE}},
-    {5, {0x0296, "letter_v", DRAW_V_ENABLE}},
+    {0, {640, "one_finger_left_swipe", SLIDE_LEFT_ENABLE}},
+    {1, {641, "one_finger_right_swipe", SLIDE_RIGHT_ENABLE}},
+    {2, {642, "one_finger_up_swipe", SLIDE_UP_ENABLE}},
+    {3, {643, "one_finger_down_swipe", SLIDE_DOWN_ENABLE}},
+    {4, {656, "letter_e", DRAW_E_ENABLE}},
+    {5, {657, "letter_c", DRAW_C_ENABLE}},
+    {6, {658, "letter_w", DRAW_W_ENABLE}},
+    {7, {659, "letter_m", DRAW_M_ENABLE}},
+    {8, {660, "letter_o", DRAW_O_ENABLE}},
+    {9, {661, "letter_s", DRAW_S_ENABLE}},
+    {10, {662, "letter_v", DRAW_V_ENABLE}},
+    {11, {666, "letter_z", DRAW_Z_ENABLE}},
 };
 
 static FifoWatcher *dt2wWatcher;
