@@ -317,10 +317,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     MzSDM845Parts
 
-# KeyHandler
-PRODUCT_PACKAGES += \
-    KeyHandler
-
 # FastCharge HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.fastcharge@1.0-service.meizu_sdm845
