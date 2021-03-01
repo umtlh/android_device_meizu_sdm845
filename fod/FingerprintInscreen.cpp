@@ -29,6 +29,7 @@
 
 #define NOTIFY_HAL_DELAY 60
 
+#define BOOST_ENABLE_PATH "/sys/class/meizu/fp/qos_set"
 #define HBM_ENABLE_PATH "/sys/class/meizu/lcm/display/hbm"
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
@@ -115,6 +116,7 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 Return<void> FingerprintInscreen::onPress() {
     acquire_wake_lock(PARTIAL_WAKE_LOCK, LOG_TAG);
     mFingerPressed = true;
+    set(BOOST_ENABLE_PATH, 1);
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(12)); /* crDroid != Descendant */
         set(HBM_ENABLE_PATH, 1);
