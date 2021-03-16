@@ -197,4 +197,4 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/meizu/m1882/BoardConfigVendor.mk
--include vendor/meizu/sdm845-common/BoardConfigVendor.mk
+-include vendor/meizu/sdm845/BoardConfigVendor.mk
