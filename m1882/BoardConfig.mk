@@ -54,6 +54,25 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/m1882/prebuilt/dtbo.img
 TARGET_KERNEL_SOURCE := kernel/meizu/sdm845
 TARGET_KERNEL_CONFIG := sdm845-perf_defconfig
 
+# Kernel Modules
+BOARD_VENDOR_KERNEL_MODULES := \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/mpq-adapter.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/mpq-dmx-hw-plugin.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/pinctrl-wcd.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/qca_cld3_wlan.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/rdbg.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/snd-soc-cs35l41-spi.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/snd-soc-cs35l41.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/snd-soc-sdm845.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/snd-soc-wcd-mbhc.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/snd-soc-wcd-spi.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/snd-soc-wcd934x.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/snd-soc-wcd9xxx.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/swr-wcd-ctrl.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/tspp.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/wcd-core.ko \
+    $(DEVICE_PATH)/m1882/prebuilt/vendor-modules/wcd-dsp-glink.ko
+
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := sdm845
