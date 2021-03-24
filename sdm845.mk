@@ -188,6 +188,9 @@ PRODUCT_BOOT_JARS += \
     QPerformance \
     UxPerformance
 
+PRODUCT_PACKAGES += \
+    DisableQTIApps
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0
