@@ -23,6 +23,7 @@
 #define SLIDE_UP_ENABLE     (1 << 2)
 #define SLIDE_DOWN_ENABLE   (1 << 3)
 #define DOUBLE_TAP_ENABLE   (1 << 4)
+#define LONG_TAP_ENABLE     (1 << 6)
 #define DRAW_E_ENABLE       (1 << 7)
 #define DRAW_C_ENABLE       (1 << 8)
 #define DRAW_W_ENABLE       (1 << 9)
@@ -31,7 +32,6 @@
 #define DRAW_S_ENABLE       (1 << 12)
 #define DRAW_V_ENABLE       (1 << 13)
 #define DRAW_Z_ENABLE       (1 << 14)
-#define FOD_ENABLE          (1 << 24)
 #define ALL_GESTURE_ENABLE  (1 << 31)
 
 namespace {
@@ -78,7 +78,7 @@ TouchscreenGesture::TouchscreenGesture() {
 
     signal(SIGTERM, sighandler);
 
-    setValue(FOD_ENABLE, true);
+    setValue(LONG_TAP_ENABLE, true);
 }
 
 Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb resultCb) {
