@@ -98,7 +98,6 @@ public class AODService extends Service {
             Log.d(TAG, "Trigger AOD");
             while (!mInteractive) {
                 Utils.enterAOD();
-                Utils.boostAOD();
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
