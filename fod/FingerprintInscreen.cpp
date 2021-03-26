@@ -31,6 +31,7 @@
 
 #define NOTIFY_HAL_DELAY 60
 
+#define FOD_GESTURE_ENABLE_PATH "/dev/vendor.lineage.touch@1.0/fod"
 #define BOOST_ENABLE_PATH "/sys/class/meizu/fp/qos_set"
 #define HBM_ENABLE_PATH "/sys/class/meizu/lcm/display/hbm"
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
@@ -147,6 +148,7 @@ Return<void> FingerprintInscreen::onRelease() {
 
 Return<void> FingerprintInscreen::onShowFODView() {
     notifyHal(NOTIFY_SCREEN_OFF, 0);
+    set(FOD_GESTURE_ENABLE_PATH, 1);
     mIconShown = true;
     mFODModel = GetProperty("vendor.meizu.fp_vendor", "");
     LOG(INFO) << "mFODModel: " << mFODModel;
@@ -155,6 +157,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
 
 Return<void> FingerprintInscreen::onHideFODView() {
     notifyHal(NOTIFY_SCREEN_ON, 0);
+    set(FOD_GESTURE_ENABLE_PATH, 0);
     mIconShown = false;
     return Void();
 }
