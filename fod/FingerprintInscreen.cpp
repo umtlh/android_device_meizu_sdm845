@@ -26,6 +26,8 @@
 
 #define NOTIFY_FINGER_DETECTED 1
 #define NOTIFY_FINGER_REMOVED 2
+#define NOTIFY_SCREEN_ON 3
+#define NOTIFY_SCREEN_OFF 4
 
 #define NOTIFY_HAL_DELAY 60
 
@@ -144,6 +146,7 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
+    notifyHal(NOTIFY_SCREEN_OFF, 0);
     mIconShown = true;
     mFODModel = GetProperty("vendor.meizu.fp_vendor", "");
     LOG(INFO) << "mFODModel: " << mFODModel;
@@ -151,6 +154,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
+    notifyHal(NOTIFY_SCREEN_ON, 0);
     mIconShown = false;
     return Void();
 }
