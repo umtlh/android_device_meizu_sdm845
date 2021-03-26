@@ -17,6 +17,7 @@
 #define GESTURE_CONTROL_PATH "/sys/class/meizu/tp/gesture_control"
 
 #define DT2W_FIFO_PATH "/dev/vendor.lineage.touch@1.0/dt2w"
+#define FOD_FIFO_PATH "/dev/vendor.lineage.touch@1.0/fod"
 
 #define SLIDE_LEFT_ENABLE   (1 << 0)
 #define SLIDE_RIGHT_ENABLE  (1 << 1)
@@ -64,10 +65,12 @@ const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGe
 };
 
 static FifoWatcher *dt2wWatcher;
+static FifoWatcher *fodWatcher;
 
 static void sighandler(int) {
     LOG(INFO) << "Exiting";
     dt2wWatcher->exit();
+    fodWatcher->exit();
 }
 
 TouchscreenGesture::TouchscreenGesture() {
@@ -76,9 +79,12 @@ TouchscreenGesture::TouchscreenGesture() {
         setValue(DOUBLE_TAP_ENABLE, value);
     });
 
-    signal(SIGTERM, sighandler);
+    fodWatcher = new FifoWatcher(FOD_FIFO_PATH, [this](const std::string& file, int value) {
+        LOG(INFO) << "WatcherCallback: " << file << ": " << value;
+        setValue(LONG_TAP_ENABLE, value);
+    });
 
-    setValue(LONG_TAP_ENABLE, true);
+    signal(SIGTERM, sighandler);
 }
 
 Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb resultCb) {
