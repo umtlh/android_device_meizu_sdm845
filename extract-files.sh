@@ -90,6 +90,9 @@ function blob_fixup() {
     etc/vstab_db_0_720p_video_30fps.config | etc/vstab_db_0_4k_video_30fps.config | etc/vstab_db_0_1080p_video_30fps.config | vendor/lib/camera/components/com.arcsoft.node.realtimebokeh.so | vendor/lib/camera/components/com.qti.stats.pdlib.so | vendor/lib/camera/components/com.arcsoft.node.capturebokeh.so | vendor/lib/camera/components/com.arcsoft.node.picauto.so | vendor/lib/camera/components/com.inv.node.eis.so | vendor/lib/camera/components/com.arcsoft.node.hdr.so | vendor/lib/camera/components/com.qti.stats.aec.so | vendor/lib/camera/components/com.arcsoft.node.beauty.so | vendor/lib/camera/components/com.arcsoft.node.smoothtransition.so | vendor/lib/camera/components/com.arcsoft.node.lowlighthdr.so | vendor/lib/libmms_hal_vstab.so | vendor/lib/libarcsoft_dualcam_refocus.so | vendor/lib/hw/com.qti.chi.override.so | vendor/lib/hw/camera.qcom.so)
         sed -i "s|/data/misc/camera|/data/vendor/cumX|g" "${2}"
         ;;
+    vendor/etc/perf/commonresourceconfigs.xml | vendor/etc/perf/perfboostsconfig.xml | vendor/etc/perf/perfconfigstore.xml | vendor/etc/perf/targetconfig.xml | vendor/etc/perf/targetresourceconfigs.xml)
+        sed -i "s|Target=\"sdm710\"|Target=\"sdm845\"|g" "${2}"
+        ;;
     esac
 }
 
