@@ -16,9 +16,27 @@
 
 #include <compositionengine/FodExtension.h>
 
+#include <log/log.h>
+#include <fstream>
+
+#define HBM_ENABLE_PATH "/sys/class/meizu/lcm/display/hbm"
+
+/*
+ * Write value to path and close file.
+ */
+template <typename T>
+static void set(const std::string& path, const T& value) {
+    std::ofstream file(path);
+    file << value;
+}
+
 uint32_t getFodZOrder(uint32_t z, bool touched) {
     if (touched) {
-        z |= 0x30;
+        set(HBM_ENABLE_PATH, 1);
+        ALOGI("getFodZOrder: HBM is on!");
+    } else {
+        set(HBM_ENABLE_PATH, 0);
+        ALOGI("getFodZOrder: HBM is off!");
     }
 
     return z;

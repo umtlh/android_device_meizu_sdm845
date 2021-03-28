@@ -29,11 +29,10 @@
 #define NOTIFY_SCREEN_ON 3
 #define NOTIFY_SCREEN_OFF 4
 
-#define NOTIFY_HAL_DELAY 60
+#define NOTIFY_HAL_DELAY 100
 
 #define FOD_GESTURE_ENABLE_PATH "/dev/vendor.lineage.touch@1.0/fod"
 #define BOOST_ENABLE_PATH "/sys/class/meizu/fp/qos_set"
-#define HBM_ENABLE_PATH "/sys/class/meizu/lcm/display/hbm"
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
 #define FOD_POS_X 149 * 3
@@ -121,9 +120,6 @@ Return<void> FingerprintInscreen::onPress() {
     mFingerPressed = true;
     set(BOOST_ENABLE_PATH, 1);
     std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(12)); /* crDroid != Descendant */
-        set(HBM_ENABLE_PATH, 1);
-        LOG(INFO) << "onPress: HBM is on!";
         std::this_thread::sleep_for(std::chrono::milliseconds(NOTIFY_HAL_DELAY));
         if (mFingerPressed) {
             notifyHal(NOTIFY_FINGER_DETECTED, 0);
@@ -135,13 +131,6 @@ Return<void> FingerprintInscreen::onPress() {
 Return<void> FingerprintInscreen::onRelease() {
     mFingerPressed = false;
     notifyHal(NOTIFY_FINGER_REMOVED, 0);
-    std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(37)); /* crDroid != Descendant */
-        if (!mFingerPressed) {
-            set(HBM_ENABLE_PATH, 0);
-            LOG(INFO) << "onRelease: HBM is off!";
-        }
-    }).detach();
     release_wake_lock(LOG_TAG);
     return Void();
 }
