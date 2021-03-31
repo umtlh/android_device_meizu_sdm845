@@ -29,4 +29,7 @@
     <dimen name="fingerprint_dot_radius">11.5dp</dimen>
     <item name="fingerprint_sensor_location_fraction_y" type="fraction">78%</item>
 
+    <!-- Screen off FOD -->
+    <bool name="config_supportScreenOffFod">true</bool>
+
 </resources>
