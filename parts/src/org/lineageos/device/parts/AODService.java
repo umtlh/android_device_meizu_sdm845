@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 
 public class AODService extends Service {
@@ -89,8 +91,12 @@ public class AODService extends Service {
         mHandler.postDelayed(() -> {
             if (!mInteractive) {
                 Log.d(TAG, "Trigger AOD");
-                mLightListener.enable();
                 Utils.enterAOD();
+                if (getBrightnessMode(0) == 1) {
+                    mLightListener.enable();
+                } else {
+                    Utils.boostAOD("0");
+                }
             }
         }, AOD_DELAY_MS);
     }
@@ -98,10 +104,16 @@ public class AODService extends Service {
     void onDozePulse() {
         Log.d(TAG, "Doze pulse state detected");
         mHandler.removeCallbacksAndMessages(null);
+        mLightListener.disable();
         mHandler.postDelayed(() -> {
             if (!mInteractive) {
                 Log.d(TAG, "Trigger AOD");
                 Utils.enterAOD();
+                if (getBrightnessMode(0) == 1) {
+                    mLightListener.enable();
+                } else {
+                    Utils.boostAOD("0");
+                }
             }
         }, PULSE_RESTORE_DELAY_MS);
     }
@@ -117,4 +129,15 @@ public class AODService extends Service {
             mOldBoostAOD = mBoostAOD;
         }
     }
+
+    int getBrightnessMode(int defaultValue) {
+        int brightnessMode = defaultValue;
+        try {
+            brightnessMode = Settings.System.getInt(getContentResolver(),
+                    Settings.System.SCREEN_BRIGHTNESS_MODE);
+        } catch (SettingNotFoundException snfe) {
+        }
+        return brightnessMode;
+    }
+
 }
