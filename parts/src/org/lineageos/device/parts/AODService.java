@@ -24,9 +24,11 @@ public class AODService extends Service {
 
     private SettingObserver mSettingObserver;
     private ScreenReceiver mScreenReceiver;
+    private LightListener mLightListener;
 
     private Handler mHandler = new Handler(Looper.getMainLooper());
     private boolean mInteractive = true;
+    private boolean mOldBoostAOD = false;
 
     @Override
     public void onCreate() {
@@ -35,6 +37,7 @@ public class AODService extends Service {
 
         mSettingObserver = new SettingObserver(this);
         mScreenReceiver = new ScreenReceiver(this);
+        mLightListener = new LightListener(this);
 
         mSettingObserver.enable();
 
@@ -76,6 +79,7 @@ public class AODService extends Service {
     void onDisplayOn() {
         Log.d(TAG, "Device interactive");
         mInteractive = true;
+        mLightListener.disable();
         mHandler.removeCallbacksAndMessages(null);
     }
 
@@ -85,6 +89,7 @@ public class AODService extends Service {
         mHandler.postDelayed(() -> {
             if (!mInteractive) {
                 Log.d(TAG, "Trigger AOD");
+                mLightListener.enable();
                 Utils.enterAOD();
             }
         }, AOD_DELAY_MS);
@@ -99,5 +104,17 @@ public class AODService extends Service {
                 Utils.enterAOD();
             }
         }, PULSE_RESTORE_DELAY_MS);
+    }
+
+    void onChangedLuxState(boolean mBoostAOD) {
+        if (!mInteractive && mOldBoostAOD != mBoostAOD) {
+            Log.d(TAG, "Handle ambient lighting around the phone");
+            if (mBoostAOD) {
+                Utils.boostAOD("1");
+            } else {
+                Utils.boostAOD("0");
+            }
+            mOldBoostAOD = mBoostAOD;
+        }
     }
 }
