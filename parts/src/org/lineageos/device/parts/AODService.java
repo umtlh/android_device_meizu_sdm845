@@ -14,17 +14,14 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 public class AODService extends Service {
 
     private static final String TAG = "AODService";
     private static final boolean DEBUG = false;
 
     private static final long AOD_DELAY_MS = 1000;
+    private static final long PULSE_RESTORE_DELAY_MS = 11000; // maximum pulse notification time 10s
 
-    private ExecutorService mExecutorService;
     private SettingObserver mSettingObserver;
     private ScreenReceiver mScreenReceiver;
 
@@ -43,7 +40,6 @@ public class AODService extends Service {
 
         if (Utils.isAODEnabled(this)) {
             mScreenReceiver.enable();
-            mExecutorService = Executors.newSingleThreadExecutor();
         }
     }
 
@@ -85,26 +81,23 @@ public class AODService extends Service {
 
     void onDisplayOff() {
         Log.d(TAG, "Device non-interactive");
+        mInteractive = false;
         mHandler.postDelayed(() -> {
-            mInteractive = false;
-            mExecutorService.execute(someRunnable);
+            if (!mInteractive) {
+                Log.d(TAG, "Trigger AOD");
+                Utils.enterAOD();
+            }
         }, AOD_DELAY_MS);
     }
 
-
-    Runnable someRunnable = new Runnable() {
-        @Override
-        public void run() {
-            Log.d(TAG, "Trigger AOD");
-            while (!mInteractive) {
+    void onDozePulse() {
+        Log.d(TAG, "Doze pulse state detected");
+        mHandler.removeCallbacksAndMessages(null);
+        mHandler.postDelayed(() -> {
+            if (!mInteractive) {
+                Log.d(TAG, "Trigger AOD");
                 Utils.enterAOD();
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
-        }
-    };
-
+        }, PULSE_RESTORE_DELAY_MS);
+    }
 }
