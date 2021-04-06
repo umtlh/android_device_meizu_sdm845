@@ -48,16 +48,22 @@ void property_override(char const prop[], char const value[])
     else
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
-void property_override_dual(char const system_prop[],
+void property_override_hexa(char const prop[], char const system_prop[],
+    char const system_ext_prop[], char const product_prop[], char const odm_prop[],
     char const vendor_prop[], char const value[])
 {
+    property_override(prop, value);
     property_override(system_prop, value);
+    property_override(system_ext_prop, value);
+    property_override(product_prop, value);
+    property_override(odm_prop, value);
     property_override(vendor_prop, value);
 }
 
 void vendor_load_properties()
 {
-    property_override_dual("ro.build.type", "ro.vendor.build.type", "user");
-    property_override_dual("ro.build.tags", "ro.vendor.build.tags", "release-keys");
+
+    property_override_hexa("ro.build.type", "ro.system.build.type", "ro.system_ext.build.type", "ro.product.build.type", "ro.odm.build.type", "ro.vendor.build.type", "user");
+    property_override_hexa("ro.build.tags", "ro.system.build.tags", "ro.system_ext.build.tags", "ro.product.build.tags", "ro.odm.build.tags", "ro.vendor.build.tags", "release-keys");
     property_override("ro.boot.verifiedbootstate", "green");
 }
