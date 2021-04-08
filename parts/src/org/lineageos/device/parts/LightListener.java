@@ -24,6 +24,7 @@ class LightListener implements SensorEventListener {
     private static final boolean DEBUG = false;
 
     private static final long COMPARATIVE_LUX_VALUE = 375;
+    private static final int SENSOR_DELAY_CUSTOM = 100000000; // 10s
 
     private final AODService mService;
 
@@ -65,7 +66,7 @@ class LightListener implements SensorEventListener {
         if (DEBUG) Log.d(TAG, "Enabling");
         mIsListening = true;
         submit(() -> {
-            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            mSensorManager.registerListener(this, mSensor, SENSOR_DELAY_CUSTOM);
         });
     }
 
