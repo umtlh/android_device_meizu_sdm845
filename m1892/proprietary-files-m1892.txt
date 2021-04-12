@@ -51,6 +51,15 @@ vendor/firmware/dw_173hz.bin
 vendor/firmware/dw_174hz.bin
 vendor/firmware/dw_175hz.bin
 vendor/firmware/mpacc_ring.bin
+vendor/firmware/mzese.b00
+vendor/firmware/mzese.b01
+vendor/firmware/mzese.b02
+vendor/firmware/mzese.b03
+vendor/firmware/mzese.b04
+vendor/firmware/mzese.b05
+vendor/firmware/mzese.b06
+vendor/firmware/mzese.b07
+vendor/firmware/mzese.mdt
 vendor/firmware/plug_usb_ring.bin
 vendor/firmware/sim_ring00.bin
 vendor/firmware/sim_ring01.bin
@@ -125,3 +134,8 @@ vendor/firmware/sms_ring29.bin
 vendor/firmware/sms_ring30.bin
 vendor/firmware/sms_ring31.bin
 vendor/firmware/sms_ring32.bin
+vendor/firmware/syna_tp.img
+vendor/firmware/ZKL_SimHei_48.bin
+
+# WiFi
+vendor/bin/iwpriv
