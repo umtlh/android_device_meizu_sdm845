@@ -16,14 +16,17 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class AODService extends Service {
 
     private static final String TAG = "AODService";
     private static final boolean DEBUG = false;
 
     private static final long AOD_DELAY_MS = 1000;
-    private static final long PULSE_RESTORE_DELAY_MS = 11000; // maximum pulse notification time 10s
 
+    private ExecutorService mExecutorService;
     private SettingObserver mSettingObserver;
     private ScreenReceiver mScreenReceiver;
     private LightListener mLightListener;
@@ -45,6 +48,7 @@ public class AODService extends Service {
 
         if (Utils.isAODEnabled(this)) {
             mScreenReceiver.enable();
+            mExecutorService = Executors.newSingleThreadExecutor();
         }
     }
 
@@ -87,35 +91,16 @@ public class AODService extends Service {
 
     void onDisplayOff() {
         Log.d(TAG, "Device non-interactive");
-        mInteractive = false;
         mHandler.postDelayed(() -> {
-            if (!mInteractive) {
-                Log.d(TAG, "Trigger AOD");
-                Utils.enterAOD();
-                if (getBrightnessMode(0) == 1) {
-                    mLightListener.enable();
-                } else {
-                    Utils.boostAOD("0");
-                }
+            Log.d(TAG, "Trigger AOD");
+            mInteractive = false;
+            mExecutorService.execute(someRunnable);
+            if (getBrightnessMode(0) == 1) {
+                mLightListener.enable();
+            } else {
+                Utils.boostAOD("0");
             }
         }, AOD_DELAY_MS);
-    }
-
-    void onDozePulse() {
-        Log.d(TAG, "Doze pulse state detected");
-        mHandler.removeCallbacksAndMessages(null);
-        mLightListener.disable();
-        mHandler.postDelayed(() -> {
-            if (!mInteractive) {
-                Log.d(TAG, "Trigger AOD");
-                Utils.enterAOD();
-                if (getBrightnessMode(0) == 1) {
-                    mLightListener.enable();
-                } else {
-                    Utils.boostAOD("0");
-                }
-            }
-        }, PULSE_RESTORE_DELAY_MS);
     }
 
     void onChangedLuxState(boolean mBoostAOD) {
@@ -139,5 +124,20 @@ public class AODService extends Service {
         }
         return brightnessMode;
     }
+
+    Runnable someRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Log.d(TAG, "Trigger AOD");
+            while (!mInteractive) {
+                Utils.enterAOD();
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
 
 }

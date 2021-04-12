@@ -18,12 +18,9 @@ class ScreenReceiver extends BroadcastReceiver {
     private static final String TAG = "AODScreen";
     private static final boolean DEBUG = false;
 
-    /** adb shell am broadcast -a com.android.systemui.doze.pulse com.android.systemui */
-    private static final String PULSE_ACTION = "com.android.systemui.doze.pulse";
-
     private final AODService mService;
 
-    private final IntentFilter mScreenStateFilter = new IntentFilter(PULSE_ACTION);
+    private final IntentFilter mScreenStateFilter = new IntentFilter();
 
     private boolean mIsListening = false;
 
@@ -36,9 +33,7 @@ class ScreenReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         final String action = intent.getAction();
-        if (PULSE_ACTION.equals(action)) {
-            mService.onDozePulse();
-        } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
+        if (Intent.ACTION_SCREEN_ON.equals(action)) {
             mService.onDisplayOn();
         } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
             mService.onDisplayOff();
