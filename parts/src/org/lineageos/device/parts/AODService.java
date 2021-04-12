@@ -94,7 +94,7 @@ public class AODService extends Service {
         mHandler.postDelayed(() -> {
             Log.d(TAG, "Trigger AOD");
             mInteractive = false;
-            mExecutorService.execute(someRunnable);
+            mExecutorService.execute(AODUpdater);
             if (getBrightnessMode(0) == 1) {
                 mLightListener.enable();
             } else {
@@ -125,14 +125,16 @@ public class AODService extends Service {
         return brightnessMode;
     }
 
-    Runnable someRunnable = new Runnable() {
+    Runnable AODUpdater = new Runnable() {
         @Override
         public void run() {
             Log.d(TAG, "Trigger AOD");
             while (!mInteractive) {
-                Utils.enterAOD();
+                mHandler.postDelayed(() -> {
+                    Utils.enterAOD();
+                }, AOD_DELAY_MS);
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(7500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
