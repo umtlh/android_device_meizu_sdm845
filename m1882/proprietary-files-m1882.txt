@@ -127,3 +127,5 @@ vendor/firmware/sms_ring29.bin
 vendor/firmware/sms_ring30.bin
 vendor/firmware/sms_ring31.bin
 vendor/firmware/sms_ring32.bin
+vendor/firmware/st_fts.ftb
+vendor/firmware/stm_fts_production_limits.csv
