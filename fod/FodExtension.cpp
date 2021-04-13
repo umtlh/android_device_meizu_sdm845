@@ -32,6 +32,7 @@ static void set(const std::string& path, const T& value) {
 
 uint32_t getFodZOrder(uint32_t z, bool touched) {
     if (touched) {
+        z <<= 0x10 | 0xbb000000;
         set(HBM_ENABLE_PATH, 1);
         ALOGI("getFodZOrder: HBM is on!");
     } else {
