@@ -90,6 +90,7 @@ function blob_fixup() {
         if [ -z $(patchelf --print-needed "${2}" | grep "libprotobuf-cpp-full-vendor-3.9.1.so") ]; then
             patchelf --add-needed "libprotobuf-cpp-full-vendor-3.9.1.so" "${2}"
         fi
+        sed -i "s|libgui.so|libwui.so|g" "${2}"
         ;;
     vendor/lib/hw/audio.primary.sdm845.so | vendor/lib64/hw/audio.primary.sdm845.so)
         if [ -z $(patchelf --print-needed "${2}" | grep "libprocessgroup.so") ]; then
