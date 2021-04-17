@@ -208,7 +208,7 @@ PRODUCT_PACKAGES += \
 
 # Service Tracker
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.servicetracker@1.2
+    vendor.qti.hardware.servicetracker@1.2.vendor
 
 # Dex
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
