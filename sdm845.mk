@@ -310,8 +310,6 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.3-service.meizu_sdm845
 
 # VNDK-SP
-PRODUCT_EXTRA_VNDK_VERSIONS := 29 28 27
-
 PRODUCT_PACKAGES += \
     com.android.vndk.current.on_vendor
 
