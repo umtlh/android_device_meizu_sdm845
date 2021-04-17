@@ -16,6 +16,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
 # Inherit QCOM display dependencies.
+$(call inherit-product-if-exists, vendor/qcom/opensource/commonsys-intf/display/config/display-interfaces-product.mk)
 $(call inherit-product-if-exists, vendor/qcom/opensource/commonsys-intf/display/config/display-product-system.mk)
 
 # Overlays
