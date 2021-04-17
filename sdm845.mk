@@ -162,8 +162,11 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
+    android.hidl.base@1.0_system \
     libhidltransport \
-    libhwbinder
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
 
 # Init
 PRODUCT_COPY_FILES += \
@@ -307,8 +310,9 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.3-service.meizu_sdm845
 
 # VNDK-SP
+PRODUCT_EXTRA_VNDK_VERSIONS := 29 28 27
+
 PRODUCT_PACKAGES += \
-    vndk-sp \
     com.android.vndk.current.on_vendor
 
 PRODUCT_COPY_FILES += \
