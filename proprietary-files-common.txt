@@ -242,10 +242,6 @@ vendor/firmware/bu64748gwz.prog
 bin/charger:bin/meizu_charger|2b8dbbce5530114b4cdef606eb27033cfe33c79a
 vendor/bin/hvdcp_opti
 
-# APEX x VNDK - from LA.UM.9.8.r1-02700-SDM710.0
-lib/libdexfile_support.so:vendor/apex/com.android.vndk.current.on_vendor/lib/libdexfile_support.so|7d9aa3f88a014f0ef8a0e843e4b46a9f59064ab5
-lib64/libdexfile_support.so:vendor/apex/com.android.vndk.current.on_vendor/lib64/libdexfile_support.so|b9969fc91fd81cf47a3de323257e1957ef8872a6
-
 # Fingerprint
 vendor/bin/hw/meizu.biometrics.fingerprint@2.1-service
 vendor/etc/init/meizu.biometrics.fingerprint@2.1-service.rc
