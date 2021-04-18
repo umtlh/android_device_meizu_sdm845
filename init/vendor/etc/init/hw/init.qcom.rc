@@ -655,10 +655,6 @@ on charger
     setprop persist.sys.usb.config mass_storage
     start qcom-post-boot
 
-on property:init.svc.surfaceflinger=restarting
-    stop vendor.hwcomposer-2-1
-    start vendor.hwcomposer-2-1
-
 # Logcat dump daemon, dumps logs to logdump partition
 service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/platform/soc/1d84000.ufshc/by-name/logdump
     class core
