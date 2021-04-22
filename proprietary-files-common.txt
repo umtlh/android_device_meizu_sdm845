@@ -928,7 +928,7 @@ vendor/lib64/libwfdhdcpcp.so
 vendor/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
 vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
 
-# AV - SMxx50 (10800) | QSSI (10400)
+# AV - from SMxx50 (10800) | QSSI (10400)
 system_ext/lib/extractors/libmmparserextractor.so
 system_ext/lib/libavenhancements.so
 system_ext/lib/libmmosal.so
@@ -938,6 +938,10 @@ system_ext/lib64/extractors/libmmparserextractor.so
 system_ext/lib64/libavenhancements.so
 system_ext/lib64/libmmosal.so
 system_ext/lib64/libmmparser_lite.so
+
+# AV - from PNX_00WW_FIH-user-11-RKQ1.200906.002-00WW_6_100-release-keys
+vendor/lib/libmmosal.so|57185feced72009af2df1b09117702c9fae7182b
+vendor/lib64/libmmosal.so|e9fdb48163e92b089cea0c397723a8416436c272
 
 # Display (HDR) - from LA.UM.9.8.r1-02700-SDM710.0
 vendor/lib/libhdr_tm.so|1e8a647523db0a09c9587a77f1f7b132a03c2354
