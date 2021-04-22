@@ -82,6 +82,8 @@ function blob_fixup() {
         if [ -z $(patchelf --print-needed "${2}" | grep "libshim_camera.so") ]; then
             patchelf --add-needed "libshim_camera.so" "${2}"
         fi
+        patchelf --remove-needed "libandroid.so" "${2}"
+        sed -i "s|libgui.so|libwui.so|g" "${2}"
         ;;
     vendor/lib/camera/components/com.inv.node.eis.so)
         if [ -z $(patchelf --print-needed "${2}" | grep "libprotobuf-cpp-full-vendor-3.9.1.so") ]; then
