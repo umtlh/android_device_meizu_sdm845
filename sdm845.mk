@@ -160,7 +160,9 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common
+    ims-ext-common \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -271,7 +273,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.5 \
     android.hardware.radio.config@1.2 \
     android.hardware.secure_element@1.2 \
-    ims-ext-common \
     libjson \
     librmnetctl \
     libxml2
