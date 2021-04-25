@@ -40,7 +40,7 @@
 #define KEY_FOD 0x0272
 
 namespace vendor {
-namespace lineage {
+namespace aospa {
 namespace biometrics {
 namespace fingerprint {
 namespace inscreen {
@@ -215,5 +215,5 @@ void FingerprintInscreen::notifyKeyEvent(int value) {
 }  // namespace inscreen
 }  // namespace fingerprint
 }  // namespace biometrics
-}  // namespace lineage
+}  // namespace aospa
 }  // namespace vendor
