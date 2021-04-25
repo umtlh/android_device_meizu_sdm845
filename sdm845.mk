@@ -286,10 +286,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     telephony-ext
 
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.meizu_sdm845
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
