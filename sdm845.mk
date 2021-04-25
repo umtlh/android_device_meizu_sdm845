@@ -354,10 +354,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay
 
-# Parts
-PRODUCT_PACKAGES += \
-    MzSDM845Parts
-
 # KeyHandler
 PRODUCT_PACKAGES += \
     KeyHandler
