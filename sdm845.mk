@@ -291,9 +291,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
 # Touch
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.meizu_sdm845
