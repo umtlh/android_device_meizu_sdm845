@@ -534,8 +534,6 @@ vendor/lib64/libgcs.so
 vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # Media
--vendor/lib/libplatformconfig.so
--vendor/lib64/libplatformconfig.so
 product/lib/vendor.qti.hardware.vpp@1.1.so
 product/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib/libAlacSwDec.so
@@ -571,6 +569,7 @@ vendor/lib/libc2dcolorconvert.so
 vendor/lib/libdsd2pcm.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmm-omxcore.so
+vendor/lib/libplatformconfig.so
 vendor/lib/libstagefrighthw.so
 vendor/lib/libvpphvx.so
 vendor/lib/libvpplibrary.so
@@ -607,6 +606,7 @@ vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libc2dcolorconvert.so
 vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libmm-omxcore.so
+vendor/lib64/libplatformconfig.so
 vendor/lib64/libstagefrighthw.so
 vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
