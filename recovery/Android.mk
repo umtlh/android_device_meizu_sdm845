@@ -9,7 +9,7 @@ TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 endif
 endif
 
-ifneq ($(filter librecovery_updater_msm,$(TARGET_RECOVERY_UPDATER_LIBS)),)
+ifneq ($(filter librecovery_updater_msm_meizu_sdm845,$(TARGET_RECOVERY_UPDATER_LIBS)),)
 BUILD_OEM_UPDATER := true
 endif
 
@@ -36,7 +36,7 @@ else ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
   LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 endif
 LOCAL_SHARED_LIBRARIES += libion
-LOCAL_MODULE := librecovery_updater_msm
+LOCAL_MODULE := librecovery_updater_msm_meizu_sdm845
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -56,7 +56,7 @@ else ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
   LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 endif
 LOCAL_SHARED_LIBRARIES += liblog libcutils libz libion
-LOCAL_MODULE := librecovery_updater_msm
+LOCAL_MODULE := librecovery_updater_msm_meizu_sdm845
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)

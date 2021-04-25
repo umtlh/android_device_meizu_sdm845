@@ -84,7 +84,7 @@ Value* BootUpdateFn(const char* name, State* state,  const std::vector<std::uniq
     return StringValue(strdup(rc ? "" : "t"));
 }
 
-void Register_librecovery_updater_msm() {
+void Register_librecovery_updater_msm_meizu_sdm845() {
     RegisterFunction("msm.decrypt", DecryptFn);
     RegisterFunction("msm.boot_update", BootUpdateFn);
 }

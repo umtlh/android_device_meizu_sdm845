@@ -23,7 +23,7 @@ ufsbsg_cc_defaults {
 }
 
 cc_library {
-    name: "librecovery_updater",
+    name: "librecovery_updater.meizu_sdm845",
     vendor: true,
     recovery_available: true,
     defaults: ["ufsbsg_defaults"],

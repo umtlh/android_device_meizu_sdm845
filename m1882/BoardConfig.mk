@@ -165,7 +165,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm_meizu_sdm845
 
 # Root
 BOARD_ROOT_EXTRA_FOLDERS := \
