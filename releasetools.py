@@ -239,13 +239,34 @@ def OTA_VerifyEnd(info, api_version, target_zip, source_zip=None):
 
 
 def FullOTA_Assertions(info):
-  #TODO: Implement device specific asserstions.
+  RenameCustomPartition(info)
   return
 
 
 def IncrementalOTA_Assertions(info):
-  #TODO: Implement device specific asserstions.
+  RenameCustomPartition(info)
   return
+
+
+def RenameCustomPartition(info):
+  info.script.Print("=================================================")
+  info.script.Print("|                !!! WARNING !!!                |")
+  info.script.Print("|                                               |")
+  info.script.Print("| This script is going to rename the /custom    |")
+  info.script.Print("| partition to /product !                       |")
+  info.script.Print("|                                               |")
+  info.script.Print("| That means that in order to install FlymeOS   |")
+  info.script.Print("| you should install the patch which renames    |")
+  info.script.Print("| the /product partition back to /custom !      |")
+  info.script.Print("|                                               |")
+  info.script.Print("| Otherwise when installing FlymeOS the script  |")
+  info.script.Print("| will fail to extract Chinese additional       |")
+  info.script.Print("| applications to /custom partition !           |")
+  info.script.Print("|                                               |")
+  info.script.Print("| Patch ->                                      |")
+  info.script.Print("| Google Drive:                                 |")
+  info.script.Print("=================================================")
+  info.script.AppendExtra('run_program("/tmp/parted", "/dev/block/sda", "name", "15", "product")')
 
 
 def IncrementalOTA_VerifyEnd(info):
