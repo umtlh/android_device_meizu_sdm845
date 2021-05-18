@@ -1,0 +1,26 @@
+//
+// Copyright (C) 2021 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "vendor.lineage.fastcharge@1.0-service.meizu_sdm845",
+    vintf_fragments: ["vendor.lineage.fastcharge@1.0-service.meizu_sdm845.xml"],
+    init_rc: ["vendor.lineage.fastcharge@1.0-service.meizu_sdm845.rc"],
+    defaults: ["hidl_defaults"],
+    relative_install_path: "hw",
+    vendor: true,
+    srcs: [
+        "FastCharge.cpp",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libcutils",
+        "libhidlbase",
+        "libutils",
+        "vendor.lineage.fastcharge@1.0",
+    ],
+}

@@ -1,0 +1,105 @@
+# Netflix
+ro.netflix.bsp_rev=Q845-14477-1
+
+# Media
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+media.stagefright.thumbnail.prefer_hw_codecs=true
+audio.offload.video=true
+media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+
+# RIL
+rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
+telephony.lteOnCdmaDevice=1
+DEVICE_PROVISIONED=1
+ril.subscription.types=NV,RUIM
+ro.telephony.default_network=22,20
+
+# Bluetooth
+vendor.bluetooth.soc=cherokee
+ro.bluetooth.emb_wp_mode=false
+ro.bluetooth.wipower=false
+bt.max.hfpclient.connections=1
+
+# Graphics
+debug.sf.early_app_phase_offset_ns=1500000
+debug.sf.early_phase_offset_ns=1500000
+debug.sf.early_gl_app_phase_offset_ns=15000000
+debug.sf.early_gl_phase_offset_ns=3000000
+sdm.debug.disable_inline_rotator=1
+sdm.debug.disable_inline_rotator_secure=0
+debug.sf.latch_unsignaled=1
+qemu.hw.mainkeys=0
+persist.demo.hdmirotationlock=false
+debug.sf.enable_hwc_vds=1
+
+# Data modules
+ro.vendor.use_data_netmgrd=true
+persist.data.wda.enable=true
+persist.data.df.dl_mode=5
+persist.data.df.ul_mode=5
+persist.data.df.agg.dl_pkt=10
+persist.data.df.agg.dl_size=4096
+persist.data.df.mux_count=8
+persist.data.df.iwlan_mux=9
+persist.data.df.dev_name=rmnet_usb0
+persist.fuse_sdcard=true
+
+# Perf
+iop.enable_prefetch_ofr=1
+iop.enable_uxe=0
+
+# Audio
+vendor.audio.hw.aac.encoder=true
+ro.qc.sdk.audio.fluencetype=none
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
+audio.offload.gapless.enabled=true
+audio.offload.buffer.size.kb=32
+audio.offload.disable=true
+ro.audio.monitorRotation=true
+media.stagefright.audio.deep=true
+
+# CABL
+ro.qualcomm.cabl=0
+
+# NETMGR
+persist.data.netmgrd.qos.enable=true
+persist.vendor.data.mode=concurrent
+
+# GNSS
+persist.vendor.overlay.izat.optin=rro
+persist.backup.ntpServer="0.pool.ntp.org"
+
+# Misc
+debug.mdpcomp.logs=0
+dev.pm.dyn_samplingrate=1
+mmp.enable.3g2=true
+persist.mm.enable.prefetch=true
+ro.qc.sdk.audio.ssr=false
+persist.rmnet.data.enable=true
+persist.debug.coresight.config=stm-events
+debug.gralloc.gfx_ubwc_disable=0
+persist.sys.force_sw_gles=1
+ro.kernel.qemu.gles=0
+sdm.debug.disable_scalar=0
+sdm.debug.prefersplit=1
+sdm.debug.disable_dest_scalar=1
+persist.vendor.qti.games.gt.prof=1
+persist.hvx.hwjpeg.enable=true
+persist.timed.enable=true
+
+# FRP Partition
+ro.frp.pst=/dev/block/platform/soc/1d84000.ufshc/by-name/frp
+
+# Dalvik-VM
+dalvik.vm.dex2oat-filter=everything
+dalvik.vm.image-dex2oat-filter=everything
+
+# Doze
+ro.sensor.proximity=true
